@@ -1,0 +1,1061 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.8625,
+              25.4195
+            ],
+            [
+              81.8645,
+              25.4195
+            ],
+            [
+              81.8648,
+              25.418
+            ],
+            [
+              81.8628,
+              25.418
+            ],
+            [
+              81.8625,
+              25.4195
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "104",
+        "khasraNumber": "104",
+        "khataNumber": "00412",
+        "registryId": "IN-UP-PRG-104",
+        "district": "Prayagraj",
+        "districtHi": "प्रयागराज",
+        "tehsil": "Karchhana",
+        "tehsilHi": "करछना",
+        "village": "Mauza Naini",
+        "villageHi": "मौजा नैनी",
+        "ownerName": "रामेश्वर शर्मा (Rameshwar Sharma)",
+        "ownerWallet": "0x94B73E12D3F5C24A0991823aA1175628bC38431E",
+        "phone": "+91 98765-43210",
+        "gender": "Male",
+        "rakbaHectare": 0.0223,
+        "rakbaSqFt": 2400,
+        "bighaBiswa": "1.76 बिस्वा (0.088 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "कृषि भूमि (दो फसली - गेहूँ, सरसों)",
+        "circleRate": 3480000,
+        "marketPrice": 4500000,
+        "ratePerSqFt": 1875,
+        "govtRatePerSqFt": 1450,
+        "stampDutyMale": 315000,
+        "stampDutyFemale": 270000,
+        "stampDutyPaid": 315000,
+        "registrationFee": 45000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "SBI API Certified (0 Liens / KCC चुकता)",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "High Court UP Bench Clear • धारा 34 नामांतरण पूर्ण",
+        "status": "Pending",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeih43x7v57qln4x535n23165p3z317d7b4e284920482049",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक / लेखपाल आर. के. यादव (ID: LKP-7821)",
+        "applicantDate": "2024-10-14",
+        "coordinates": {
+          "cornerA": "25.42184° N, 81.86542° E",
+          "cornerB": "25.42186° N, 81.86588° E",
+          "azimuth": "0° (North)",
+          "scale": "25m"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.8647,
+              25.4196
+            ],
+            [
+              81.8672,
+              25.4201
+            ],
+            [
+              81.8676,
+              25.4183
+            ],
+            [
+              81.8649,
+              25.418
+            ],
+            [
+              81.8647,
+              25.4196
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "105",
+        "khasraNumber": "105",
+        "khataNumber": "00419",
+        "registryId": "IN-UP-PRG-105",
+        "district": "Prayagraj",
+        "districtHi": "प्रयागराज",
+        "tehsil": "Karchhana",
+        "tehsilHi": "करछना",
+        "village": "Mauza Naini",
+        "villageHi": "मौजा नैनी",
+        "ownerName": "सुरेश चन्द्र मिश्रा (Suresh Chandra Mishra)",
+        "ownerWallet": "0x15D391c499D3C0bE4e18372791837d9283a0A65A",
+        "phone": "+91 98890-12345",
+        "gender": "Male",
+        "rakbaHectare": 0.0297,
+        "rakbaSqFt": 3200,
+        "bighaBiswa": "2.35 बिस्वा (0.117 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "कृषि खेत (धान / बासमती फसल)",
+        "circleRate": 4640000,
+        "marketPrice": 6200000,
+        "ratePerSqFt": 1937,
+        "govtRatePerSqFt": 1450,
+        "stampDutyMale": 434000,
+        "stampDutyFemale": 372000,
+        "stampDutyPaid": 434000,
+        "registrationFee": 62000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "Bank of Baroda Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "Clear Title Mutation Verified",
+        "status": "Verified",
+        "isForSale": false,
+        "isDisputed": false,
+        "ipfsCID": "bafybeigvdf54q7z7384n23165p3z317d7b4e284920482098",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक / लेखपाल आर. के. यादव (ID: LKP-7821)",
+        "applicantDate": "2024-10-12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.833,
+              25.453
+            ],
+            [
+              81.8355,
+              25.453
+            ],
+            [
+              81.8358,
+              25.4515
+            ],
+            [
+              81.8333,
+              25.4515
+            ],
+            [
+              81.833,
+              25.453
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "150/3",
+        "khasraNumber": "150/3",
+        "khataNumber": "00290",
+        "registryId": "IN-UP-PRG-150-3",
+        "district": "Prayagraj",
+        "districtHi": "प्रयागराज",
+        "tehsil": "Sadar",
+        "tehsilHi": "सदर",
+        "village": "Civil Lines",
+        "villageHi": "सिविल लाइन्स",
+        "ownerName": "वी. सिंघानिया (V. Singhania)",
+        "ownerWallet": "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199",
+        "phone": "+91 98390-11223",
+        "gender": "Male",
+        "rakbaHectare": 0.0453,
+        "rakbaSqFt": 4880,
+        "bighaBiswa": "3.58 बिस्वा (0.179 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "उप-नगरीय आवासीय/व्यावसायिक भूमि",
+        "circleRate": 15600000,
+        "marketPrice": 18500000,
+        "ratePerSqFt": 3790,
+        "govtRatePerSqFt": 3200,
+        "stampDutyMale": 1295000,
+        "stampDutyFemale": 1110000,
+        "stampDutyPaid": 1295000,
+        "registrationFee": 185000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "HDFC Bank API Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "ADA Master Plan Approved",
+        "status": "Pending",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeih923847n23165p3z317d7b4e2849204820129",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक संजय श्रीवास्तव (ID: LKP-7902)",
+        "applicantDate": "2024-10-18"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.8605,
+              25.4194
+            ],
+            [
+              81.8622,
+              25.4194
+            ],
+            [
+              81.8625,
+              25.4182
+            ],
+            [
+              81.8608,
+              25.4182
+            ],
+            [
+              81.8605,
+              25.4194
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "88",
+        "khasraNumber": "88",
+        "khataNumber": "00392",
+        "registryId": "IN-UP-PRG-088",
+        "district": "Prayagraj",
+        "districtHi": "प्रयागराज",
+        "tehsil": "Karchhana",
+        "tehsilHi": "करछना",
+        "village": "Mauza Naini",
+        "villageHi": "मौजा नैनी",
+        "ownerName": "श्रीमती अनन्य देवी (Ananya Devi & Co.)",
+        "ownerWallet": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+        "phone": "+91 94152-33445",
+        "gender": "Female",
+        "rakbaHectare": 0.0148,
+        "rakbaSqFt": 1600,
+        "bighaBiswa": "1.18 बिस्वा (0.059 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "अमरूद का बाग (प्रयागराज सफेदा)",
+        "circleRate": 2320000,
+        "marketPrice": 2800000,
+        "ratePerSqFt": 1750,
+        "govtRatePerSqFt": 1450,
+        "stampDutyMale": 196000,
+        "stampDutyFemale": 168000,
+        "stampDutyPaid": 168000,
+        "registrationFee": 28000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "Cooperative Bank Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "Mutation Query - Lekhpal Audit Complete",
+        "status": "Pending",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeif4738923165p3z317d7b4e2849204820556",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक / लेखपाल आर. के. यादव (ID: LKP-7821)",
+        "applicantDate": "2024-10-19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.8645,
+              25.4204
+            ],
+            [
+              81.8662,
+              25.4216
+            ],
+            [
+              81.8675,
+              25.4208
+            ],
+            [
+              81.8652,
+              25.42
+            ],
+            [
+              81.8645,
+              25.4204
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "108",
+        "khasraNumber": "108",
+        "khataNumber": "00431",
+        "registryId": "IN-UP-PRG-108",
+        "district": "Prayagraj",
+        "districtHi": "प्रयागराज",
+        "tehsil": "Karchhana",
+        "tehsilHi": "करछना",
+        "village": "Mauza Naini",
+        "villageHi": "मौजा नैनी",
+        "ownerName": "बाबूलाल पटेल (Babulal Patel)",
+        "ownerWallet": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+        "phone": "+91 94500-11223",
+        "gender": "Male",
+        "rakbaHectare": 0.0195,
+        "rakbaSqFt": 2100,
+        "bighaBiswa": "1.54 बिस्वा (0.077 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "कृषि भूमि (आंशिक विवादित)",
+        "circleRate": 2520000,
+        "marketPrice": 2900000,
+        "ratePerSqFt": 1380,
+        "govtRatePerSqFt": 1200,
+        "stampDutyMale": 203000,
+        "stampDutyFemale": 174000,
+        "stampDutyPaid": 0,
+        "registrationFee": 29000,
+        "lienStatus": "Stay Order",
+        "bankLienDetail": "Court Injunction Active - Transaction Frozen",
+        "litigationStatus": "Civil Suit 419/2023",
+        "litigationDetail": "Prayagraj District Court Civil Suit #419/2023 Partition Stay",
+        "status": "Disputed",
+        "isForSale": false,
+        "isDisputed": true,
+        "ipfsCID": "bafybeihlitigationstay4192023p3z317d7b4e2849",
+        "lekhpalVerified": false,
+        "lekhpalName": "राजस्व निरीक्षक / लेखपाल आर. के. यादव (ID: LKP-7821)",
+        "applicantDate": "2024-10-05"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.8356,
+              25.4532
+            ],
+            [
+              81.8378,
+              25.4535
+            ],
+            [
+              81.838,
+              25.452
+            ],
+            [
+              81.8358,
+              25.4518
+            ],
+            [
+              81.8356,
+              25.4532
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "142/1",
+        "khasraNumber": "142/1",
+        "khataNumber": "00418",
+        "registryId": "IN-UP-PRG-142-1",
+        "district": "Prayagraj",
+        "districtHi": "प्रयागराज",
+        "tehsil": "Sadar",
+        "tehsilHi": "सदर",
+        "village": "Civil Lines",
+        "villageHi": "सिविल लाइन्स",
+        "ownerName": "राजेश कुमार वर्मा (Rajesh Kumar Verma)",
+        "ownerWallet": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "phone": "+91 98399-44556",
+        "gender": "Male",
+        "rakbaHectare": 0.0288,
+        "rakbaSqFt": 3100,
+        "bighaBiswa": "2.28 बिस्वा (0.114 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "कृषि सह आवासीय भूखंड",
+        "circleRate": 8200000,
+        "marketPrice": 9500000,
+        "ratePerSqFt": 3064,
+        "govtRatePerSqFt": 2645,
+        "stampDutyMale": 665000,
+        "stampDutyFemale": 570000,
+        "stampDutyPaid": 665000,
+        "registrationFee": 95000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "Punjab National Bank Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "Clear Registry & Mutation",
+        "status": "Verified",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeicivillines142verified7b4e2849204820",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक संजय श्रीवास्तव (ID: LKP-7902)",
+        "applicantDate": "2024-10-15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.8615,
+              25.4203
+            ],
+            [
+              81.8632,
+              25.4215
+            ],
+            [
+              81.8645,
+              25.4205
+            ],
+            [
+              81.8626,
+              25.4196
+            ],
+            [
+              81.8615,
+              25.4203
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "103",
+        "khasraNumber": "103",
+        "khataNumber": "00408",
+        "registryId": "IN-UP-PRG-103",
+        "district": "Prayagraj",
+        "districtHi": "प्रयागराज",
+        "tehsil": "Karchhana",
+        "tehsilHi": "करछना",
+        "village": "Mauza Naini",
+        "villageHi": "मौजा नैनी",
+        "ownerName": "महेन्द्र यादव (Mahendra Yadav)",
+        "ownerWallet": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "phone": "+91 97950-88776",
+        "gender": "Male",
+        "rakbaHectare": 0.026,
+        "rakbaSqFt": 2800,
+        "bighaBiswa": "2.06 बिस्वा (0.103 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "कृषि भूमि (गन्ना / बाजरा)",
+        "circleRate": 3060000,
+        "marketPrice": 3800000,
+        "ratePerSqFt": 1357,
+        "govtRatePerSqFt": 1092,
+        "stampDutyMale": 266000,
+        "stampDutyFemale": 228000,
+        "stampDutyPaid": 266000,
+        "registrationFee": 38000,
+        "lienStatus": "Under Verification",
+        "bankLienDetail": "Gramin Bank NOC Awaited",
+        "litigationStatus": "Under Mutation",
+        "litigationDetail": "Tehsildar Karchhana Mutation Case #112/2024",
+        "status": "Pending",
+        "isForSale": false,
+        "isDisputed": false,
+        "ipfsCID": "bafybeimutationpending103karchhana7b4e2849",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक / लेखपाल आर. के. यादव (ID: LKP-7821)",
+        "applicantDate": "2024-10-16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.86,
+              25.4218
+            ],
+            [
+              81.8625,
+              25.4225
+            ],
+            [
+              81.8628,
+              25.4208
+            ],
+            [
+              81.8605,
+              25.4205
+            ],
+            [
+              81.86,
+              25.4218
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "102",
+        "khasraNumber": "102",
+        "khataNumber": "00001",
+        "registryId": "IN-UP-PRG-102",
+        "district": "Prayagraj",
+        "districtHi": "प्रयागराज",
+        "tehsil": "Karchhana",
+        "tehsilHi": "करछना",
+        "village": "Mauza Naini",
+        "villageHi": "मौजा नैनी",
+        "ownerName": "ग्राम सभा नैनी / उ.प्र. राजस्व परिषद",
+        "ownerWallet": "0x0000000000000000000000000000000000000000",
+        "phone": "+91 0532-2460111",
+        "gender": "Government",
+        "rakbaHectare": 0.0334,
+        "rakbaSqFt": 3600,
+        "bighaBiswa": "2.65 बिस्वा (0.132 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "ग्राम सभा आरक्षित भूमि (चारागाह / बंजर)",
+        "circleRate": 5220000,
+        "marketPrice": 0,
+        "ratePerSqFt": 0,
+        "govtRatePerSqFt": 1450,
+        "stampDutyMale": 0,
+        "stampDutyFemale": 0,
+        "stampDutyPaid": 0,
+        "registrationFee": 0,
+        "lienStatus": "Government Property",
+        "bankLienDetail": "Protected Under UP Revenue Code Sec 77",
+        "litigationStatus": "Public Asset",
+        "litigationDetail": "Non-Transferable State Reserve",
+        "status": "Govt Land",
+        "isForSale": false,
+        "isDisputed": false,
+        "ipfsCID": "bafybeigovtreservenaini1027b4e2849",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक / लेखपाल आर. के. यादव (ID: LKP-7821)",
+        "applicantDate": "2024-09-01"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.9835,
+              26.6965
+            ],
+            [
+              80.9865,
+              26.6965
+            ],
+            [
+              80.9868,
+              26.6942
+            ],
+            [
+              80.9838,
+              26.6942
+            ],
+            [
+              80.9835,
+              26.6965
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "214",
+        "khasraNumber": "214",
+        "khataNumber": "00192",
+        "registryId": "IN-UP-LKO-214",
+        "district": "Lucknow",
+        "districtHi": "लखनऊ",
+        "tehsil": "Mohanlalganj",
+        "tehsilHi": "मोहनलालगंज",
+        "village": "Sisendi",
+        "villageHi": "सिसेण्डी",
+        "ownerName": "अनुराग सिंह यादव (Anurag Singh Yadav)",
+        "ownerWallet": "0x55d398326f99059fF775485246999027B3197955",
+        "phone": "+91 99190-44112",
+        "gender": "Male",
+        "rakbaHectare": 0.0501,
+        "rakbaSqFt": 5400,
+        "bighaBiswa": "4.00 बिस्वा (0.20 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "आम का बाग (दशहरी - मलिहाबादी बेल्ट)",
+        "circleRate": 4800000,
+        "marketPrice": 5800000,
+        "ratePerSqFt": 1074,
+        "govtRatePerSqFt": 888,
+        "stampDutyMale": 406000,
+        "stampDutyFemale": 348000,
+        "stampDutyPaid": 406000,
+        "registrationFee": 58000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "SBI Mohanlalganj Branch Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "Revenue Court Case Free • 100% Clear Title",
+        "status": "Verified",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeisisendimohanlalganj2147b4e2849",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक अमित अवस्थी (ID: LKP-8104)",
+        "applicantDate": "2024-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.9868,
+              26.6966
+            ],
+            [
+              80.9895,
+              26.6968
+            ],
+            [
+              80.9898,
+              26.6948
+            ],
+            [
+              80.987,
+              26.6945
+            ],
+            [
+              80.9868,
+              26.6966
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "215",
+        "khasraNumber": "215",
+        "khataNumber": "00198",
+        "registryId": "IN-UP-LKO-215",
+        "district": "Lucknow",
+        "districtHi": "लखनऊ",
+        "tehsil": "Mohanlalganj",
+        "tehsilHi": "मोहनलालगंज",
+        "village": "Sisendi",
+        "villageHi": "सिसेण्डी",
+        "ownerName": "शिव प्रसाद वर्मा (Shiv Prasad Verma)",
+        "ownerWallet": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4df",
+        "phone": "+91 98388-77112",
+        "gender": "Male",
+        "rakbaHectare": 0.039,
+        "rakbaSqFt": 4200,
+        "bighaBiswa": "3.10 बिस्वा (0.155 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "कृषि खेत (गेहूँ, मक्का व आलू)",
+        "circleRate": 3600000,
+        "marketPrice": 4200000,
+        "ratePerSqFt": 1000,
+        "govtRatePerSqFt": 857,
+        "stampDutyMale": 294000,
+        "stampDutyFemale": 252000,
+        "stampDutyPaid": 294000,
+        "registrationFee": 42000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "Bank of India Certified (Loan Free)",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "Clear Mutation Record (विवाद रहित)",
+        "status": "Verified",
+        "isForSale": false,
+        "isDisputed": false,
+        "ipfsCID": "bafybeisisendiwheat2157b4e2849",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक अमित अवस्थी (ID: LKP-8104)",
+        "applicantDate": "2024-10-11"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.0135,
+              26.8532
+            ],
+            [
+              81.0165,
+              26.8535
+            ],
+            [
+              81.0168,
+              26.8515
+            ],
+            [
+              81.0138,
+              26.8512
+            ],
+            [
+              81.0135,
+              26.8532
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "89/2",
+        "khasraNumber": "89/2",
+        "khataNumber": "00512",
+        "registryId": "IN-UP-LKO-089-2",
+        "district": "Lucknow",
+        "districtHi": "लखनऊ",
+        "tehsil": "Sadar",
+        "tehsilHi": "सदर",
+        "village": "Gomti Nagar Vistar",
+        "villageHi": "गोमती नगर विस्तार",
+        "ownerName": "डॉ. आलोक नाथ त्रिपाठी (Dr. Alok Nath Tripathi)",
+        "ownerWallet": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+        "phone": "+91 94150-88990",
+        "gender": "Male",
+        "rakbaHectare": 0.0297,
+        "rakbaSqFt": 3200,
+        "bighaBiswa": "2.35 बिस्वा (0.117 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "आवासीय/व्यावसायिक प्राइम प्लॉट (LDA Master Plan)",
+        "circleRate": 12800000,
+        "marketPrice": 14500000,
+        "ratePerSqFt": 4531,
+        "govtRatePerSqFt": 4000,
+        "stampDutyMale": 1015000,
+        "stampDutyFemale": 870000,
+        "stampDutyPaid": 1015000,
+        "registrationFee": 145000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "Axis Bank Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "LDA Approved • All Dues Paid",
+        "status": "Pending",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeigomtinagar892ldaclear7b4e2849",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक मनोज बाजपेयी (ID: LKP-8210)",
+        "applicantDate": "2024-10-17"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              82.9535,
+              25.3535
+            ],
+            [
+              82.9568,
+              25.3535
+            ],
+            [
+              82.957,
+              25.3512
+            ],
+            [
+              82.9538,
+              25.3512
+            ],
+            [
+              82.9535,
+              25.3535
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "112",
+        "khasraNumber": "112",
+        "khataNumber": "00318",
+        "registryId": "IN-UP-VNS-112",
+        "district": "Varanasi",
+        "districtHi": "वाराणसी",
+        "tehsil": "Pindra",
+        "tehsilHi": "पिंडरा",
+        "village": "Phulpur Kashi",
+        "villageHi": "फूलपुर काशी",
+        "ownerName": "कन्हैया लाल बनारसी (Kanhaiya Lal Banarasi)",
+        "ownerWallet": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+        "phone": "+91 94510-77665",
+        "gender": "Male",
+        "rakbaHectare": 0.0418,
+        "rakbaSqFt": 4500,
+        "bighaBiswa": "3.30 बिस्वा (0.165 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "कृषि भूमि (सब्जियां व गेंदा फूल की खेती)",
+        "circleRate": 3950000,
+        "marketPrice": 4800000,
+        "ratePerSqFt": 1066,
+        "govtRatePerSqFt": 877,
+        "stampDutyMale": 336000,
+        "stampDutyFemale": 288000,
+        "stampDutyPaid": 336000,
+        "registrationFee": 48000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "Union Bank of India Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "Clear Title • Khatauni Copy Verified",
+        "status": "Verified",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeiphulpurkashi1127b4e2849",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक दिनेश चौबे (ID: LKP-8312)",
+        "applicantDate": "2024-10-13"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              82.2005,
+              26.7992
+            ],
+            [
+              82.2035,
+              26.7995
+            ],
+            [
+              82.2038,
+              26.7975
+            ],
+            [
+              82.2008,
+              26.7972
+            ],
+            [
+              82.2005,
+              26.7992
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "51",
+        "khasraNumber": "51",
+        "khataNumber": "00085",
+        "registryId": "IN-UP-AYD-051",
+        "district": "Ayodhya",
+        "districtHi": "अयोध्या",
+        "tehsil": "Sadar",
+        "tehsilHi": "सदर",
+        "village": "Ramkot",
+        "villageHi": "रामकोट",
+        "ownerName": "महंत राघवेन्द्र दास (Mahant Raghavendra Das)",
+        "ownerWallet": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+        "phone": "+91 94504-11889",
+        "gender": "Male",
+        "rakbaHectare": 0.0325,
+        "rakbaSqFt": 3500,
+        "bighaBiswa": "2.57 बिस्वा (0.128 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "उद्यान व औषधीय वाटिका भूमि",
+        "circleRate": 9800000,
+        "marketPrice": 12000000,
+        "ratePerSqFt": 3428,
+        "govtRatePerSqFt": 2800,
+        "stampDutyMale": 840000,
+        "stampDutyFemale": 720000,
+        "stampDutyPaid": 840000,
+        "registrationFee": 120000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "SBI Ayodhya Dham Branch Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "Ayodhya Master Plan Clean • No Injunction",
+        "status": "Verified",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeiramkotayodhya517b4e2849",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक धर्मराज मिश्र (ID: LKP-8422)",
+        "applicantDate": "2024-10-11"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              83.3905,
+              26.7462
+            ],
+            [
+              83.3938,
+              26.7465
+            ],
+            [
+              83.394,
+              26.7445
+            ],
+            [
+              83.3908,
+              26.7442
+            ],
+            [
+              83.3905,
+              26.7462
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "63",
+        "khasraNumber": "63",
+        "khataNumber": "00220",
+        "registryId": "IN-UP-GKP-063",
+        "district": "Gorakhpur",
+        "districtHi": "गोरखपुर",
+        "tehsil": "Sadar",
+        "tehsilHi": "सदर",
+        "village": "Taramandal",
+        "villageHi": "तारामंडल",
+        "ownerName": "अखिलेश राय (Akhilesh Rai)",
+        "ownerWallet": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+        "phone": "+91 94155-22334",
+        "gender": "Male",
+        "rakbaHectare": 0.0316,
+        "rakbaSqFt": 3400,
+        "bighaBiswa": "2.50 बिस्वा (0.125 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "कृषि सह आवासीय प्राइम भूखंड",
+        "circleRate": 7200000,
+        "marketPrice": 8800000,
+        "ratePerSqFt": 2588,
+        "govtRatePerSqFt": 2117,
+        "stampDutyMale": 616000,
+        "stampDutyFemale": 528000,
+        "stampDutyPaid": 616000,
+        "registrationFee": 88000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "Central Bank of India Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "GDA Approved Development Zone",
+        "status": "Verified",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeitaramandalgorakhpur637b4e2849",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक सुरेन्द्र प्रताप (ID: LKP-8551)",
+        "applicantDate": "2024-10-12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.2735,
+              26.6135
+            ],
+            [
+              80.2768,
+              26.6135
+            ],
+            [
+              80.277,
+              26.6112
+            ],
+            [
+              80.2738,
+              26.6112
+            ],
+            [
+              80.2735,
+              26.6135
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "landId": "42",
+        "khasraNumber": "42",
+        "khataNumber": "00115",
+        "registryId": "IN-UP-KNP-042",
+        "district": "Kanpur Nagar",
+        "districtHi": "कानपुर नगर",
+        "tehsil": "Kalyanpur",
+        "tehsilHi": "कल्याणपुर",
+        "village": "Bithoor",
+        "villageHi": "बिठूर",
+        "ownerName": "सत्येन्द्र नाथ दीक्षित (Satyendra Nath Dixit)",
+        "ownerWallet": "0x55d398326f99059fF775485246999027B3197955",
+        "phone": "+91 98391-44778",
+        "gender": "Male",
+        "rakbaHectare": 0.0427,
+        "rakbaSqFt": 4600,
+        "bighaBiswa": "3.38 बिस्वा (0.169 बीघा)",
+        "fasliYear": "1431-1436 फसली",
+        "landType": "गंगा कछार कृषि भूमि (तरबूज, खरबूजा व आलू)",
+        "circleRate": 4350000,
+        "marketPrice": 5200000,
+        "ratePerSqFt": 1130,
+        "govtRatePerSqFt": 945,
+        "stampDutyMale": 364000,
+        "stampDutyFemale": 312000,
+        "stampDutyPaid": 364000,
+        "registrationFee": 52000,
+        "lienStatus": "Nil Encumbrance",
+        "bankLienDetail": "Bank of Baroda Bithoor Certified",
+        "litigationStatus": "Zero Disputes",
+        "litigationDetail": "Clear Heritage Buffer Zone Certificate",
+        "status": "Verified",
+        "isForSale": true,
+        "isDisputed": false,
+        "ipfsCID": "bafybeibithoorkanpur427b4e2849",
+        "lekhpalVerified": true,
+        "lekhpalName": "राजस्व निरीक्षक वेद प्रकाश शुक्ला (ID: LKP-8619)",
+        "applicantDate": "2024-10-14"
+      }
+    }
+  ]
+}

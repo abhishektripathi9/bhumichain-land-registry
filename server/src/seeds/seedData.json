@@ -1,0 +1,738 @@
+[
+  {
+    "landId": "104",
+    "khasraNumber": "104",
+    "khataNumber": "00412",
+    "registryId": "IN-UP-PRG-104",
+    "village": "Mauza Naini",
+    "tehsil": "Karchhana",
+    "district": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "pinCode": "211008",
+    "ownerName": "रामेश्वर शर्मा (Rameshwar Sharma)",
+    "ownerWallet": "0x94B73E12D3F5C24A0991823aA1175628bC38431E",
+    "areaHectares": 0.0223,
+    "marketPrice": 4500000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            81.8625,
+            25.4195
+          ],
+          [
+            81.8645,
+            25.4195
+          ],
+          [
+            81.8648,
+            25.418
+          ],
+          [
+            81.8628,
+            25.418
+          ],
+          [
+            81.8625,
+            25.4195
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "105",
+    "khasraNumber": "105",
+    "khataNumber": "00419",
+    "registryId": "IN-UP-PRG-105",
+    "village": "Mauza Naini",
+    "tehsil": "Karchhana",
+    "district": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "pinCode": "211008",
+    "ownerName": "सुरेश चन्द्र मिश्रा (Suresh Chandra Mishra)",
+    "ownerWallet": "0x15D391c499D3C0bE4e18372791837d9283a0A65A",
+    "areaHectares": 0.0297,
+    "marketPrice": 6200000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": false,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            81.8647,
+            25.4196
+          ],
+          [
+            81.8672,
+            25.4201
+          ],
+          [
+            81.8676,
+            25.4183
+          ],
+          [
+            81.8649,
+            25.418
+          ],
+          [
+            81.8647,
+            25.4196
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "103",
+    "khasraNumber": "103",
+    "khataNumber": "00408",
+    "registryId": "IN-UP-PRG-103",
+    "village": "Mauza Naini",
+    "tehsil": "Karchhana",
+    "district": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "pinCode": "211008",
+    "ownerName": "महेन्द्र यादव (Mahendra Yadav)",
+    "ownerWallet": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+    "areaHectares": 0.026,
+    "marketPrice": 3800000,
+    "loanStatus": "Under Verification",
+    "disputeStatus": "Under Mutation",
+    "status": "Pending",
+    "isForSale": false,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            81.8615,
+            25.4203
+          ],
+          [
+            81.8632,
+            25.4215
+          ],
+          [
+            81.8645,
+            25.4205
+          ],
+          [
+            81.8626,
+            25.4196
+          ],
+          [
+            81.8615,
+            25.4203
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "108",
+    "khasraNumber": "108",
+    "khataNumber": "00431",
+    "registryId": "IN-UP-PRG-108",
+    "village": "Mauza Naini",
+    "tehsil": "Karchhana",
+    "district": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "pinCode": "211008",
+    "ownerName": "बाबूलाल पटेल (Babulal Patel)",
+    "ownerWallet": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "areaHectares": 0.0195,
+    "marketPrice": 2900000,
+    "loanStatus": "Under Verification",
+    "disputeStatus": "Civil Suit 419/2023",
+    "status": "Disputed",
+    "isForSale": false,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            81.8645,
+            25.4204
+          ],
+          [
+            81.8662,
+            25.4216
+          ],
+          [
+            81.8675,
+            25.4208
+          ],
+          [
+            81.8652,
+            25.42
+          ],
+          [
+            81.8645,
+            25.4204
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "88",
+    "khasraNumber": "88",
+    "khataNumber": "00392",
+    "registryId": "IN-UP-PRG-088",
+    "village": "Mauza Naini",
+    "tehsil": "Karchhana",
+    "district": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "pinCode": "211008",
+    "ownerName": "श्रीमती अनन्य देवी (Ananya Devi & Co.)",
+    "ownerWallet": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+    "areaHectares": 0.0148,
+    "marketPrice": 2800000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            81.8605,
+            25.4194
+          ],
+          [
+            81.8622,
+            25.4194
+          ],
+          [
+            81.8625,
+            25.4182
+          ],
+          [
+            81.8608,
+            25.4182
+          ],
+          [
+            81.8605,
+            25.4194
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "102",
+    "khasraNumber": "102",
+    "khataNumber": "00001",
+    "registryId": "IN-UP-PRG-102",
+    "village": "Mauza Naini",
+    "tehsil": "Karchhana",
+    "district": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "pinCode": "211008",
+    "ownerName": "ग्राम सभा नैनी / उ.प्र. राजस्व परिषद",
+    "ownerWallet": "0x0000000000000000000000000000000000000000",
+    "areaHectares": 0.0334,
+    "marketPrice": 0,
+    "loanStatus": "Under Verification",
+    "disputeStatus": "Public Asset",
+    "status": "Govt Land",
+    "isForSale": false,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            81.86,
+            25.4218
+          ],
+          [
+            81.8625,
+            25.4225
+          ],
+          [
+            81.8628,
+            25.4208
+          ],
+          [
+            81.8605,
+            25.4205
+          ],
+          [
+            81.86,
+            25.4218
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "150/3",
+    "khasraNumber": "150/3",
+    "khataNumber": "00290",
+    "registryId": "IN-UP-PRG-150-3",
+    "village": "Civil Lines",
+    "tehsil": "Sadar",
+    "district": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "pinCode": "211001",
+    "ownerName": "वी. सिंघानिया (V. Singhania)",
+    "ownerWallet": "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199",
+    "areaHectares": 0.0453,
+    "marketPrice": 18500000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            81.833,
+            25.453
+          ],
+          [
+            81.8355,
+            25.453
+          ],
+          [
+            81.8358,
+            25.4515
+          ],
+          [
+            81.8333,
+            25.4515
+          ],
+          [
+            81.833,
+            25.453
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "142/1",
+    "khasraNumber": "142/1",
+    "khataNumber": "00418",
+    "registryId": "IN-UP-PRG-142-1",
+    "village": "Civil Lines",
+    "tehsil": "Sadar",
+    "district": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "pinCode": "211001",
+    "ownerName": "राजेश कुमार वर्मा (Rajesh Kumar Verma)",
+    "ownerWallet": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+    "areaHectares": 0.0288,
+    "marketPrice": 9500000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            81.8356,
+            25.4532
+          ],
+          [
+            81.8378,
+            25.4535
+          ],
+          [
+            81.838,
+            25.452
+          ],
+          [
+            81.8358,
+            25.4518
+          ],
+          [
+            81.8356,
+            25.4532
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "214",
+    "khasraNumber": "214",
+    "khataNumber": "00192",
+    "registryId": "IN-UP-LKO-214",
+    "village": "Sisendi",
+    "tehsil": "Mohanlalganj",
+    "district": "Lucknow",
+    "state": "Uttar Pradesh",
+    "pinCode": "226301",
+    "ownerName": "अनुराग सिंह यादव (Anurag Singh Yadav)",
+    "ownerWallet": "0x55d398326f99059fF775485246999027B3197955",
+    "areaHectares": 0.0501,
+    "marketPrice": 5800000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            80.9835,
+            26.6965
+          ],
+          [
+            80.9865,
+            26.6965
+          ],
+          [
+            80.9868,
+            26.6942
+          ],
+          [
+            80.9838,
+            26.6942
+          ],
+          [
+            80.9835,
+            26.6965
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "215",
+    "khasraNumber": "215",
+    "khataNumber": "00198",
+    "registryId": "IN-UP-LKO-215",
+    "village": "Sisendi",
+    "tehsil": "Mohanlalganj",
+    "district": "Lucknow",
+    "state": "Uttar Pradesh",
+    "pinCode": "226301",
+    "ownerName": "शिव प्रसाद वर्मा (Shiv Prasad Verma)",
+    "ownerWallet": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4df",
+    "areaHectares": 0.039,
+    "marketPrice": 4200000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": false,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            80.9868,
+            26.6966
+          ],
+          [
+            80.9895,
+            26.6968
+          ],
+          [
+            80.9898,
+            26.6948
+          ],
+          [
+            80.987,
+            26.6945
+          ],
+          [
+            80.9868,
+            26.6966
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "89/2",
+    "khasraNumber": "89/2",
+    "khataNumber": "00512",
+    "registryId": "IN-UP-LKO-089-2",
+    "village": "Gomti Nagar Vistar",
+    "tehsil": "Sadar",
+    "district": "Lucknow",
+    "state": "Uttar Pradesh",
+    "pinCode": "226010",
+    "ownerName": "डॉ. आलोक नाथ त्रिपाठी (Dr. Alok Nath Tripathi)",
+    "ownerWallet": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "areaHectares": 0.0297,
+    "marketPrice": 14500000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            81.0135,
+            26.8532
+          ],
+          [
+            81.0165,
+            26.8535
+          ],
+          [
+            81.0168,
+            26.8515
+          ],
+          [
+            81.0138,
+            26.8512
+          ],
+          [
+            81.0135,
+            26.8532
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "112",
+    "khasraNumber": "112",
+    "khataNumber": "00318",
+    "registryId": "IN-UP-VNS-112",
+    "village": "Phulpur Kashi",
+    "tehsil": "Pindra",
+    "district": "Varanasi",
+    "state": "Uttar Pradesh",
+    "pinCode": "221206",
+    "ownerName": "कन्हैया लाल बनारसी (Kanhaiya Lal Banarasi)",
+    "ownerWallet": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+    "areaHectares": 0.0418,
+    "marketPrice": 4800000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            82.9535,
+            25.3535
+          ],
+          [
+            82.9568,
+            25.3535
+          ],
+          [
+            82.957,
+            25.3512
+          ],
+          [
+            82.9538,
+            25.3512
+          ],
+          [
+            82.9535,
+            25.3535
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "115",
+    "khasraNumber": "115",
+    "khataNumber": "00325",
+    "registryId": "IN-UP-VNS-115",
+    "village": "Phulpur Kashi",
+    "tehsil": "Pindra",
+    "district": "Varanasi",
+    "state": "Uttar Pradesh",
+    "pinCode": "221206",
+    "ownerName": "राम नारायण पाण्डेय (Ram Narayan Pandey)",
+    "ownerWallet": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "areaHectares": 0.0353,
+    "marketPrice": 3950000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": false,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            82.957,
+            25.3536
+          ],
+          [
+            82.9598,
+            25.3538
+          ],
+          [
+            82.96,
+            25.3518
+          ],
+          [
+            82.9572,
+            25.3515
+          ],
+          [
+            82.957,
+            25.3536
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "51",
+    "khasraNumber": "51",
+    "khataNumber": "00085",
+    "registryId": "IN-UP-AYD-051",
+    "village": "Ramkot",
+    "tehsil": "Sadar",
+    "district": "Ayodhya",
+    "state": "Uttar Pradesh",
+    "pinCode": "224123",
+    "ownerName": "महंत राघवेन्द्र दास (Mahant Raghavendra Das)",
+    "ownerWallet": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+    "areaHectares": 0.0325,
+    "marketPrice": 12000000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            82.2005,
+            26.7992
+          ],
+          [
+            82.2035,
+            26.7995
+          ],
+          [
+            82.2038,
+            26.7975
+          ],
+          [
+            82.2008,
+            26.7972
+          ],
+          [
+            82.2005,
+            26.7992
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "63",
+    "khasraNumber": "63",
+    "khataNumber": "00220",
+    "registryId": "IN-UP-GKP-063",
+    "village": "Taramandal",
+    "tehsil": "Sadar",
+    "district": "Gorakhpur",
+    "state": "Uttar Pradesh",
+    "pinCode": "273016",
+    "ownerName": "अखिलेश राय (Akhilesh Rai)",
+    "ownerWallet": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+    "areaHectares": 0.0316,
+    "marketPrice": 8800000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            83.3905,
+            26.7462
+          ],
+          [
+            83.3938,
+            26.7465
+          ],
+          [
+            83.394,
+            26.7445
+          ],
+          [
+            83.3908,
+            26.7442
+          ],
+          [
+            83.3905,
+            26.7462
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "landId": "42",
+    "khasraNumber": "42",
+    "khataNumber": "00115",
+    "registryId": "IN-UP-KNP-042",
+    "village": "Bithoor",
+    "tehsil": "Kalyanpur",
+    "district": "Kanpur Nagar",
+    "state": "Uttar Pradesh",
+    "pinCode": "209217",
+    "ownerName": "सत्येन्द्र नाथ दीक्षित (Satyendra Nath Dixit)",
+    "ownerWallet": "0x55d398326f99059fF775485246999027B3197955",
+    "areaHectares": 0.0427,
+    "marketPrice": 5200000,
+    "loanStatus": "Clear",
+    "disputeStatus": "Zero Disputes",
+    "status": "Verified",
+    "isForSale": true,
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            80.2735,
+            26.6135
+          ],
+          [
+            80.2768,
+            26.6135
+          ],
+          [
+            80.277,
+            26.6112
+          ],
+          [
+            80.2738,
+            26.6112
+          ],
+          [
+            80.2735,
+            26.6135
+          ]
+        ]
+      ]
+    }
+  }
+]

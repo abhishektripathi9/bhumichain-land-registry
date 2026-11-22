@@ -1,0 +1,906 @@
+{
+  "Prayagraj:Karchhana": [
+    {
+      "code": "162101",
+      "nameEn": "Mauza Naini",
+      "nameHi": "मौजा नैनी",
+      "center": [
+        25.4188,
+        81.8637
+      ],
+      "lgdCode": "162101"
+    },
+    {
+      "code": "162102",
+      "nameEn": "Dandi",
+      "nameHi": "डांडी",
+      "center": [
+        25.392,
+        81.881
+      ],
+      "lgdCode": "162102"
+    },
+    {
+      "code": "162103",
+      "nameEn": "Chak Imam Ali",
+      "nameHi": "चक इमाम अली",
+      "center": [
+        25.405,
+        81.875
+      ],
+      "lgdCode": "162103"
+    },
+    {
+      "code": "162104",
+      "nameEn": "Arail",
+      "nameHi": "अरैल",
+      "center": [
+        25.422,
+        81.878
+      ],
+      "lgdCode": "162104"
+    },
+    {
+      "code": "162105",
+      "nameEn": "Mohabatganj",
+      "nameHi": "मोहब्बतगंज",
+      "center": [
+        25.385,
+        81.89
+      ],
+      "lgdCode": "162105"
+    },
+    {
+      "code": "162106",
+      "nameEn": "Chhivki",
+      "nameHi": "छिवकी",
+      "center": [
+        25.375,
+        81.87
+      ],
+      "lgdCode": "162106"
+    },
+    {
+      "code": "162107",
+      "nameEn": "Lavayan Kalan",
+      "nameHi": "लवायन कलां",
+      "center": [
+        25.362,
+        81.912
+      ],
+      "lgdCode": "162107"
+    },
+    {
+      "code": "162108",
+      "nameEn": "Deora",
+      "nameHi": "देओरा",
+      "center": [
+        25.35,
+        81.895
+      ],
+      "lgdCode": "162108"
+    }
+  ],
+  "Prayagraj:Sadar": [
+    {
+      "code": "162001",
+      "nameEn": "Civil Lines",
+      "nameHi": "सिविल लाइंस",
+      "center": [
+        25.452,
+        81.835
+      ],
+      "lgdCode": "162001"
+    },
+    {
+      "code": "162002",
+      "nameEn": "Darbhanga Colony",
+      "nameHi": "दरभंगा कॉलोनी",
+      "center": [
+        25.456,
+        81.842
+      ],
+      "lgdCode": "162002"
+    },
+    {
+      "code": "162003",
+      "nameEn": "Jhusi",
+      "nameHi": "झूसी",
+      "center": [
+        25.431,
+        81.895
+      ],
+      "lgdCode": "162003"
+    },
+    {
+      "code": "162004",
+      "nameEn": "Phaphamau",
+      "nameHi": "फाफामऊ",
+      "center": [
+        25.502,
+        81.854
+      ],
+      "lgdCode": "162004"
+    },
+    {
+      "code": "162005",
+      "nameEn": "Govindpur",
+      "nameHi": "गोविंदपुर",
+      "center": [
+        25.472,
+        81.872
+      ],
+      "lgdCode": "162005"
+    },
+    {
+      "code": "162006",
+      "nameEn": "Allahpur",
+      "nameHi": "अल्लाहपुर",
+      "center": [
+        25.448,
+        81.865
+      ],
+      "lgdCode": "162006"
+    }
+  ],
+  "Prayagraj:Phulpur": [
+    {
+      "code": "162301",
+      "nameEn": "Phulpur Dehat",
+      "nameHi": "फूलपुर देहात",
+      "center": [
+        25.551,
+        82.083
+      ],
+      "lgdCode": "162301"
+    },
+    {
+      "code": "162302",
+      "nameEn": "Babu Sarai",
+      "nameHi": "बाबू सराय",
+      "center": [
+        25.54,
+        82.071
+      ],
+      "lgdCode": "162302"
+    },
+    {
+      "code": "162303",
+      "nameEn": "Kalyanpur",
+      "nameHi": "कल्याणपुर",
+      "center": [
+        25.562,
+        82.095
+      ],
+      "lgdCode": "162303"
+    }
+  ],
+  "Prayagraj:Soraon": [
+    {
+      "code": "162401",
+      "nameEn": "Soraon Rural",
+      "nameHi": "सोरांव ग्रामीण",
+      "center": [
+        25.583,
+        81.854
+      ],
+      "lgdCode": "162401"
+    },
+    {
+      "code": "162402",
+      "nameEn": "Mandhata",
+      "nameHi": "मानधाता",
+      "center": [
+        25.601,
+        81.87
+      ],
+      "lgdCode": "162402"
+    }
+  ],
+  "Banda:Sadar": [
+    {
+      "code": "158101",
+      "nameEn": "Mawai Buzurg",
+      "nameHi": "मवई बुजुर्ग",
+      "center": [
+        25.485,
+        80.342
+      ],
+      "lgdCode": "158101"
+    },
+    {
+      "code": "158102",
+      "nameEn": "Tindwari",
+      "nameHi": "तिंदवारी",
+      "center": [
+        25.612,
+        80.531
+      ],
+      "lgdCode": "158102"
+    },
+    {
+      "code": "158103",
+      "nameEn": "Khurhand",
+      "nameHi": "खुरहंड",
+      "center": [
+        25.42,
+        80.45
+      ],
+      "lgdCode": "158103"
+    },
+    {
+      "code": "158104",
+      "nameEn": "Badokhar Khurd",
+      "nameHi": "बड़ोखर खुर्द",
+      "center": [
+        25.46,
+        80.32
+      ],
+      "lgdCode": "158104"
+    }
+  ],
+  "Banda:Naraini": [
+    {
+      "code": "158201",
+      "nameEn": "Naraini Rural",
+      "nameHi": "नरैनी ग्रामीण",
+      "center": [
+        25.192,
+        80.485
+      ],
+      "lgdCode": "158201"
+    },
+    {
+      "code": "158202",
+      "nameEn": "Kartal",
+      "nameHi": "करतल",
+      "center": [
+        25.142,
+        80.42
+      ],
+      "lgdCode": "158202"
+    },
+    {
+      "code": "158203",
+      "nameEn": "Guda",
+      "nameHi": "गुढ़ा",
+      "center": [
+        25.21,
+        80.51
+      ],
+      "lgdCode": "158203"
+    }
+  ],
+  "Banda:Atarra": [
+    {
+      "code": "158301",
+      "nameEn": "Atarra Rural",
+      "nameHi": "अतर्रा ग्रामीण",
+      "center": [
+        25.291,
+        80.572
+      ],
+      "lgdCode": "158301"
+    },
+    {
+      "code": "158302",
+      "nameEn": "Badausa",
+      "nameHi": "बदौसा",
+      "center": [
+        25.24,
+        80.64
+      ],
+      "lgdCode": "158302"
+    },
+    {
+      "code": "158303",
+      "nameEn": "Turra",
+      "nameHi": "तुर्रा",
+      "center": [
+        25.31,
+        80.55
+      ],
+      "lgdCode": "158303"
+    }
+  ],
+  "Banda:Baberu": [
+    {
+      "code": "158401",
+      "nameEn": "Baberu Dehat",
+      "nameHi": "बबेरू देहात",
+      "center": [
+        25.551,
+        80.71
+      ],
+      "lgdCode": "158401"
+    },
+    {
+      "code": "158402",
+      "nameEn": "Marka",
+      "nameHi": "मरका",
+      "center": [
+        25.62,
+        80.82
+      ],
+      "lgdCode": "158402"
+    },
+    {
+      "code": "158403",
+      "nameEn": "Murwal",
+      "nameHi": "मुरवल",
+      "center": [
+        25.51,
+        80.68
+      ],
+      "lgdCode": "158403"
+    }
+  ],
+  "Chitrakoot:Karwi": [
+    {
+      "code": "159101",
+      "nameEn": "Karwi Rural",
+      "nameHi": "कर्वी ग्रामीण",
+      "center": [
+        25.215,
+        80.892
+      ],
+      "lgdCode": "159101"
+    },
+    {
+      "code": "159102",
+      "nameEn": "Sitapur",
+      "nameHi": "सीतापुर",
+      "center": [
+        25.19,
+        80.87
+      ],
+      "lgdCode": "159102"
+    },
+    {
+      "code": "159103",
+      "nameEn": "Kamasin",
+      "nameHi": "कमासिन",
+      "center": [
+        25.23,
+        80.92
+      ],
+      "lgdCode": "159103"
+    },
+    {
+      "code": "159104",
+      "nameEn": "Khohi",
+      "nameHi": "खोही",
+      "center": [
+        25.175,
+        80.86
+      ],
+      "lgdCode": "159104"
+    }
+  ],
+  "Chitrakoot:Mau": [
+    {
+      "code": "159201",
+      "nameEn": "Mau Rural",
+      "nameHi": "मऊ ग्रामीण",
+      "center": [
+        25.28,
+        81.39
+      ],
+      "lgdCode": "159201"
+    },
+    {
+      "code": "159202",
+      "nameEn": "Bargarh",
+      "nameHi": "बरगढ़",
+      "center": [
+        25.22,
+        81.45
+      ],
+      "lgdCode": "159202"
+    }
+  ],
+  "Chitrakoot:Manikpur": [
+    {
+      "code": "159301",
+      "nameEn": "Manikpur Rural",
+      "nameHi": "मानिकपुर ग्रामीण",
+      "center": [
+        25.045,
+        81.115
+      ],
+      "lgdCode": "159301"
+    },
+    {
+      "code": "159302",
+      "nameEn": "Sarhat",
+      "nameHi": "सरहट",
+      "center": [
+        25.01,
+        81.08
+      ],
+      "lgdCode": "159302"
+    },
+    {
+      "code": "159303",
+      "nameEn": "Ranipur",
+      "nameHi": "रानीपुर",
+      "center": [
+        25.07,
+        81.16
+      ],
+      "lgdCode": "159303"
+    }
+  ],
+  "Lucknow:Sadar": [
+    {
+      "code": "141001",
+      "nameEn": "Hazratganj",
+      "nameHi": "हज़रतगंज",
+      "center": [
+        26.8467,
+        80.9462
+      ],
+      "lgdCode": "141001"
+    },
+    {
+      "code": "141002",
+      "nameEn": "Gomti Nagar",
+      "nameHi": "गोमती नगर",
+      "center": [
+        26.85,
+        80.99
+      ],
+      "lgdCode": "141002"
+    },
+    {
+      "code": "141003",
+      "nameEn": "Alambagh",
+      "nameHi": "आलमबाग",
+      "center": [
+        26.815,
+        80.905
+      ],
+      "lgdCode": "141003"
+    },
+    {
+      "code": "141004",
+      "nameEn": "Mahanagar",
+      "nameHi": "महानगर",
+      "center": [
+        26.875,
+        80.955
+      ],
+      "lgdCode": "141004"
+    }
+  ],
+  "Lucknow:Malihabad": [
+    {
+      "code": "141101",
+      "nameEn": "Malihabad Rural",
+      "nameHi": "मलिहाबाद ग्रामीण",
+      "center": [
+        26.921,
+        80.715
+      ],
+      "lgdCode": "141101"
+    },
+    {
+      "code": "141102",
+      "nameEn": "Rahimabad",
+      "nameHi": "रहीमाबाद",
+      "center": [
+        26.96,
+        80.65
+      ],
+      "lgdCode": "141102"
+    },
+    {
+      "code": "141103",
+      "nameEn": "Kasmandi Kalan",
+      "nameHi": "कसमंडी कलां",
+      "center": [
+        26.905,
+        80.74
+      ],
+      "lgdCode": "141103"
+    }
+  ],
+  "Lucknow:Bakshi Ka Talab": [
+    {
+      "code": "141201",
+      "nameEn": "Bakshi Ka Talab",
+      "nameHi": "बख्शी का तालाब",
+      "center": [
+        26.98,
+        80.925
+      ],
+      "lgdCode": "141201"
+    },
+    {
+      "code": "141202",
+      "nameEn": "Itaunja",
+      "nameHi": "इटौंजा",
+      "center": [
+        27.05,
+        80.91
+      ],
+      "lgdCode": "141202"
+    }
+  ],
+  "Lucknow:Mohanlalganj": [
+    {
+      "code": "141301",
+      "nameEn": "Mohanlalganj Dehat",
+      "nameHi": "मोहनलालगंज देहात",
+      "center": [
+        26.68,
+        80.995
+      ],
+      "lgdCode": "141301"
+    },
+    {
+      "code": "141302",
+      "nameEn": "Gosainganj",
+      "nameHi": "गोसाईंगंज",
+      "center": [
+        26.75,
+        81.12
+      ],
+      "lgdCode": "141302"
+    },
+    {
+      "code": "141303",
+      "nameEn": "Nagram",
+      "nameHi": "नगराम",
+      "center": [
+        26.62,
+        81.13
+      ],
+      "lgdCode": "141303"
+    }
+  ],
+  "Varanasi:Sadar": [
+    {
+      "code": "190001",
+      "nameEn": "Lanka",
+      "nameHi": "लंका",
+      "center": [
+        25.28,
+        82.999
+      ],
+      "lgdCode": "190001"
+    },
+    {
+      "code": "190002",
+      "nameEn": "Sigra",
+      "nameHi": "सिगरा",
+      "center": [
+        25.315,
+        82.985
+      ],
+      "lgdCode": "190002"
+    },
+    {
+      "code": "190003",
+      "nameEn": "Sarnath",
+      "nameHi": "सारनाथ",
+      "center": [
+        25.372,
+        83.022
+      ],
+      "lgdCode": "190003"
+    },
+    {
+      "code": "190004",
+      "nameEn": "Shivpur",
+      "nameHi": "शिवपुर",
+      "center": [
+        25.355,
+        82.965
+      ],
+      "lgdCode": "190004"
+    }
+  ],
+  "Varanasi:Pindra": [
+    {
+      "code": "190101",
+      "nameEn": "Pindra Rural",
+      "nameHi": "पिंडरा ग्रामीण",
+      "center": [
+        25.485,
+        82.855
+      ],
+      "lgdCode": "190101"
+    },
+    {
+      "code": "190102",
+      "nameEn": "Babatpur",
+      "nameHi": "बाबतपुर",
+      "center": [
+        25.45,
+        82.86
+      ],
+      "lgdCode": "190102"
+    },
+    {
+      "code": "190103",
+      "nameEn": "Phulpur Varanasi",
+      "nameHi": "फूलपुर वाराणसी",
+      "center": [
+        25.52,
+        82.82
+      ],
+      "lgdCode": "190103"
+    }
+  ],
+  "Varanasi:Rajatalab": [
+    {
+      "code": "190201",
+      "nameEn": "Rajatalab Dehat",
+      "nameHi": "राजातालाब देहात",
+      "center": [
+        25.265,
+        82.875
+      ],
+      "lgdCode": "190201"
+    },
+    {
+      "code": "190202",
+      "nameEn": "Mirzamurad",
+      "nameHi": "मिर्जामुराद",
+      "center": [
+        25.23,
+        82.79
+      ],
+      "lgdCode": "190202"
+    },
+    {
+      "code": "190203",
+      "nameEn": "Rohaniya",
+      "nameHi": "रोहनिया",
+      "center": [
+        25.275,
+        82.92
+      ],
+      "lgdCode": "190203"
+    }
+  ],
+  "Kanpur Nagar:Sadar": [
+    {
+      "code": "165001",
+      "nameEn": "Civil Lines Kanpur",
+      "nameHi": "सिविल लाइंस कानपुर",
+      "center": [
+        26.475,
+        80.35
+      ],
+      "lgdCode": "165001"
+    },
+    {
+      "code": "165002",
+      "nameEn": "Kalyanpur",
+      "nameHi": "कल्याणपुर",
+      "center": [
+        26.495,
+        80.26
+      ],
+      "lgdCode": "165002"
+    },
+    {
+      "code": "165003",
+      "nameEn": "Bithoor",
+      "nameHi": "बिठूर",
+      "center": [
+        26.615,
+        80.275
+      ],
+      "lgdCode": "165003"
+    }
+  ],
+  "Kanpur Nagar:Bilhaur": [
+    {
+      "code": "165101",
+      "nameEn": "Bilhaur Dehat",
+      "nameHi": "बिल्हौर देहात",
+      "center": [
+        26.85,
+        80.05
+      ],
+      "lgdCode": "165101"
+    },
+    {
+      "code": "165102",
+      "nameEn": "Shivrajpur",
+      "nameHi": "शिवराजपुर",
+      "center": [
+        26.7,
+        80.15
+      ],
+      "lgdCode": "165102"
+    }
+  ],
+  "Kanpur Nagar:Ghatampur": [
+    {
+      "code": "165201",
+      "nameEn": "Ghatampur Rural",
+      "nameHi": "घाटमपुर ग्रामीण",
+      "center": [
+        26.16,
+        80.17
+      ],
+      "lgdCode": "165201"
+    },
+    {
+      "code": "165202",
+      "nameEn": "Patara",
+      "nameHi": "पतारा",
+      "center": [
+        26.24,
+        80.2
+      ],
+      "lgdCode": "165202"
+    }
+  ],
+  "Ayodhya:Sadar": [
+    {
+      "code": "138001",
+      "nameEn": "Ramkot",
+      "nameHi": "रामकोट",
+      "center": [
+        26.795,
+        82.2
+      ],
+      "lgdCode": "138001"
+    },
+    {
+      "code": "138002",
+      "nameEn": "Ayodhya Rural",
+      "nameHi": "अयोध्या ग्रामीण",
+      "center": [
+        26.78,
+        82.215
+      ],
+      "lgdCode": "138002"
+    },
+    {
+      "code": "138003",
+      "nameEn": "Ranopali",
+      "nameHi": "रानोपाली",
+      "center": [
+        26.77,
+        82.185
+      ],
+      "lgdCode": "138003"
+    },
+    {
+      "code": "138004",
+      "nameEn": "Bhadarsa",
+      "nameHi": "भदरसा",
+      "center": [
+        26.68,
+        82.14
+      ],
+      "lgdCode": "138004"
+    }
+  ],
+  "Ayodhya:Bikapur": [
+    {
+      "code": "138101",
+      "nameEn": "Bikapur Dehat",
+      "nameHi": "बीकापुर देहात",
+      "center": [
+        26.6,
+        82.13
+      ],
+      "lgdCode": "138101"
+    },
+    {
+      "code": "138102",
+      "nameEn": "Chaure Bazar",
+      "nameHi": "चौरे बाजार",
+      "center": [
+        26.54,
+        82.18
+      ],
+      "lgdCode": "138102"
+    }
+  ],
+  "Ayodhya:Rudauli": [
+    {
+      "code": "138201",
+      "nameEn": "Rudauli Rural",
+      "nameHi": "रुदौली ग्रामीण",
+      "center": [
+        26.75,
+        81.75
+      ],
+      "lgdCode": "138201"
+    },
+    {
+      "code": "138202",
+      "nameEn": "Bhelsar",
+      "nameHi": "भेलसर",
+      "center": [
+        26.77,
+        81.73
+      ],
+      "lgdCode": "138202"
+    }
+  ],
+  "Gorakhpur:Sadar": [
+    {
+      "code": "184001",
+      "nameEn": "Gorakhpur Rural",
+      "nameHi": "गोरखपुर ग्रामीण",
+      "center": [
+        26.76,
+        83.375
+      ],
+      "lgdCode": "184001"
+    },
+    {
+      "code": "184002",
+      "nameEn": "Chargawan",
+      "nameHi": "चरगांवा",
+      "center": [
+        26.81,
+        83.39
+      ],
+      "lgdCode": "184002"
+    },
+    {
+      "code": "184003",
+      "nameEn": "Pipraich",
+      "nameHi": "पिपराइच",
+      "center": [
+        26.83,
+        83.53
+      ],
+      "lgdCode": "184003"
+    }
+  ],
+  "Gorakhpur:Chauri Chaura": [
+    {
+      "code": "184101",
+      "nameEn": "Chauri Chaura Rural",
+      "nameHi": "चौरी चौरा ग्रामीण",
+      "center": [
+        26.645,
+        83.585
+      ],
+      "lgdCode": "184101"
+    },
+    {
+      "code": "184102",
+      "nameEn": "Mundera Bazar",
+      "nameHi": "मुंडेरा बाजार",
+      "center": [
+        26.66,
+        83.595
+      ],
+      "lgdCode": "184102"
+    }
+  ],
+  "Gorakhpur:Sahjanwa": [
+    {
+      "code": "184201",
+      "nameEn": "Sahjanwa Dehat",
+      "nameHi": "सहजनवा देहात",
+      "center": [
+        26.77,
+        83.21
+      ],
+      "lgdCode": "184201"
+    },
+    {
+      "code": "184202",
+      "nameEn": "Ghaighat",
+      "nameHi": "घाईघाट",
+      "center": [
+        26.74,
+        83.18
+      ],
+      "lgdCode": "184202"
+    }
+  ]
+}

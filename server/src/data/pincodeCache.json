@@ -1,0 +1,187 @@
+{
+  "banda:baberu:baberu:mau:25.552:80.704": {
+    "pincode": "210121",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Banda",
+    "block": "Baberu",
+    "postOfficeName": "Baberu",
+    "branchType": "Sub Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "prayagraj:sadar:sadar:civil lines:25.452:81.835": {
+    "pincode": "211001",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Prayagraj",
+    "postOfficeName": "Civil Lines",
+    "state": "Uttar Pradesh"
+  },
+  "lucknow:malihabad:malihabad:malihabad::": {
+    "pincode": "226102",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Lucknow",
+    "block": "Malihabad",
+    "postOfficeName": "Malihabad",
+    "branchType": "Sub Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:baberu:mau:81.864:25.417": {
+    "pincode": "210121",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Banda",
+    "block": "Baberu",
+    "postOfficeName": "Baberu",
+    "branchType": "Sub Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "lucknow:malihabad:malihabad:saspan:81.864:25.417": {
+    "pincode": "226102",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Lucknow",
+    "block": "Malihabad",
+    "postOfficeName": "Malihabad",
+    "branchType": "Sub Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:baberu:mau::": {
+    "pincode": "210125",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Banda",
+    "block": "Baberu",
+    "postOfficeName": "Mau",
+    "branchType": "Branch Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:baberu:mau:25.551:80.704": {
+    "pincode": "210121",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Banda",
+    "postOfficeName": "Baberu",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:kamasin:mau:25.614:80.871": {
+    "pincode": "210125",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Banda",
+    "block": "Kamasin",
+    "postOfficeName": "Kamasin",
+    "branchType": "Sub Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:kamasin:mau:25.612:80.873": {
+    "pincode": "210125",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Banda",
+    "block": "Kamasin",
+    "postOfficeName": "Mau",
+    "branchType": "Branch Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "banda::baberu:mau:25.550:80.700": {
+    "pincode": "210121",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Banda",
+    "postOfficeName": "Baberu",
+    "state": "Uttar Pradesh"
+  },
+  "prayagraj::karchhana:diha:25.320:81.900": {
+    "pincode": "212300",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Prayagraj",
+    "postOfficeName": "Rampur",
+    "state": "Uttar Pradesh"
+  },
+  "prayagraj:karchhana::diha:81.864:25.417": {
+    "pincode": "272194",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Basti",
+    "block": "",
+    "postOfficeName": "Amarediha",
+    "branchType": "Branch Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu::mau:25.552:80.713": {
+    "pincode": "210121",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Banda",
+    "postOfficeName": "Baberu",
+    "state": "Uttar Pradesh"
+  },
+  "prayagraj:karchhana:karchhana:diha:25.320:81.900": {
+    "pincode": "212300",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Prayagraj",
+    "postOfficeName": "Rampur",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:baberu:mau:25.550:80.700": {
+    "pincode": "210121",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Banda",
+    "postOfficeName": "Baberu",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:kamasin:mau:25.327:80.347": {
+    "pincode": "210129",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Banda",
+    "postOfficeName": "Mau",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:kamasin:mau:25.325:80.349": {
+    "pincode": "210129",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Banda",
+    "postOfficeName": "Mau",
+    "state": "Uttar Pradesh"
+  },
+  "chitrakoot:rajapur:ramnagar:bardwara:25.176:80.865": {
+    "pincode": "210207",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Chitrakoot",
+    "block": "Ramnagar",
+    "postOfficeName": "Bardwara",
+    "branchType": "Branch Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:kamasin:ingua:25.309:80.388": {
+    "pincode": "210125",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Banda",
+    "block": "Kamasin",
+    "postOfficeName": "Ingua",
+    "branchType": "Branch Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:kamasin:ingua:25.307:80.391": {
+    "pincode": "210125",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Banda",
+    "block": "Kamasin",
+    "postOfficeName": "Ingua",
+    "branchType": "Branch Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "banda:baberu:baberu:mau:25.612:80.873": {
+    "pincode": "210121",
+    "source": "INDIA_POST_OFFICIAL_API",
+    "district": "Banda",
+    "block": "Baberu",
+    "postOfficeName": "Baberu",
+    "branchType": "Sub Post Office",
+    "state": "Uttar Pradesh"
+  },
+  "prayagraj:karchhana:karchhana::25.343:81.897": {
+    "pincode": "211010",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Prayagraj",
+    "postOfficeName": "Nibi Taluka Khurd",
+    "state": "Uttar Pradesh"
+  },
+  "prayagraj:::madhopur:25.392:81.906": {
+    "pincode": "211108",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Prayagraj",
+    "postOfficeName": "Naini",
+    "state": "Uttar Pradesh"
+  }
+}

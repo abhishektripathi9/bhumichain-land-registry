@@ -1,0 +1,24 @@
+{
+  "name": "bhumichain-server",
+  "version": "1.0.0",
+  "description": "4-Layer Backend for BhumiChain Land Registry DApp",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/seeds/seed.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.1",
+    "express": "^4.19.2",
+    "form-data": "^4.0.0",
+    "mongoose": "^8.5.1",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^2.4.5",
+    "socket.io": "^4.7.5"
+  }
+}
