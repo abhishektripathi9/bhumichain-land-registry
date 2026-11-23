@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { useWeb3 } from "../context/Web3Context";
+import { API_BASE_URL } from "../config/api";
 import {
   Building,
   Tag,
@@ -37,7 +38,7 @@ export default function MyProperties({ onSelectParcel, onOpenChat }) {
   const [newWalletInput, setNewWalletInput] = useState("");
   const [savingPrivacy, setSavingPrivacy] = useState(false);
 
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const apiUrl = API_BASE_URL;
 
   const fetchMyData = () => {
     if (!account) {

@@ -3,6 +3,7 @@ import L from "leaflet";
 import { ethers } from "ethers";
 import { useWeb3 } from "../context/Web3Context";
 import { generateLandDossierPDF } from "../utils/pdfGenerator";
+import { API_BASE_URL } from "../config/api";
 import {
   ShieldCheck,
   CheckCircle,
@@ -82,7 +83,7 @@ export default function AdminPanel({ onNavigateToPublic }) {
   const [officerKeyUnlocked, setOfficerKeyUnlocked] = useState(true);
   const [keyError, setKeyError] = useState("");
 
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const apiUrl = API_BASE_URL;
 
   // Check authorization
   const isWalletAuthorized =

@@ -19,6 +19,7 @@ import {
   Layers,
 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { API_BASE_URL } from "../config/api";
 
 export default function VerifyQR({ onInspectOnMap }) {
   const { language } = useLanguage();
@@ -28,7 +29,7 @@ export default function VerifyQR({ onInspectOnMap }) {
   const [searched, setSearched] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = API_BASE_URL;
 
   const handleVerifyLookup = async (e) => {
     e?.preventDefault();

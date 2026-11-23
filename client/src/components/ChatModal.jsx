@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import { useWeb3 } from "../context/Web3Context";
+import { API_BASE_URL } from "../config/api";
 import {
   X,
   Send,
@@ -19,7 +20,7 @@ export default function ChatModal({ parcel, onClose }) {
   const socketRef = useRef(null);
   const messagesEndRef = useRef(null);
 
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const apiUrl = API_BASE_URL;
   const propertyId = parcel?._id;
   const sellerWallet = parcel?.ownerWallet?.toLowerCase();
   const currentWallet = (account || "0x90f79bf6eb2c4f870365e785982e1f101e93b906").toLowerCase();

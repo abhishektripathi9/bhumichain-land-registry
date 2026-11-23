@@ -14,6 +14,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { generateLandDossierPDF } from "../utils/pdfGenerator";
+import { API_BASE_URL } from "../config/api";
 
 export default function KhatauniModal({ isOpen, onClose, parcel, language = "hi" }) {
   const [loading, setLoading] = useState(false);
@@ -25,7 +26,7 @@ export default function KhatauniModal({ isOpen, onClose, parcel, language = "hi"
     let isMounted = true;
     setLoading(true);
 
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const API_URL = API_BASE_URL;
     const villageName = parcel.village || "Naini";
     const districtName = parcel.district || "Prayagraj";
     const tehsilName = parcel.tehsil || "Karchhana";

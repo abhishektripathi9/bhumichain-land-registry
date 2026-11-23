@@ -3,6 +3,7 @@ import L from "leaflet";
 import "leaflet-draw";
 import { ethers } from "ethers";
 import { useWeb3 } from "../context/Web3Context";
+import { API_BASE_URL } from "../config/api";
 import {
   FilePlus,
   UploadCloud,
@@ -46,7 +47,7 @@ export default function RegisterLand({ onRegistrationSuccess }) {
   const [createdLandId, setCreatedLandId] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const apiUrl = API_BASE_URL;
 
   // 1. Initialize Map with Leaflet Draw
   useEffect(() => {

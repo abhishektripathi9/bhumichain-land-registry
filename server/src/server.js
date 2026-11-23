@@ -142,6 +142,18 @@ app.get("/api/bhulekh/pincode", getPincode);
 app.get("/api/bhulekh/real-parcels", getRealParcels);
 app.get("/api/bhulekh/khasra-history", getKhasraHistory);
 
+// Serve built React frontend at /land-registry and root
+const clientDistPath = path.join(__dirname, "../../client/dist");
+if (fs.existsSync(clientDistPath)) {
+  app.use("/land-registry", express.static(clientDistPath));
+  app.use(express.static(clientDistPath));
+
+  app.get(["/land-registry", "/land-registry/*", "/admin", "/admin/*"], (req, res, next) => {
+    if (req.path.startsWith("/api/")) return next();
+    res.sendFile(path.join(clientDistPath, "index.html"));
+  });
+}
+
 // Socket.io Real-Time Buyer-Seller Rooms (Layer 1)
 io.on("connection", (socket) => {
   // Join property specific room

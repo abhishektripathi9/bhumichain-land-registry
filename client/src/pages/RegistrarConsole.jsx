@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import { useWeb3 } from "../context/Web3Context";
 import contractDeployment from "../contracts/contractInfo.json";
 import { generateLandDossierPDF } from "../utils/pdfGenerator";
+import { API_BASE_URL } from "../config/api";
 import {
   ShieldCheck,
   CheckCircle,
@@ -103,7 +104,7 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
   const miniMapContainerRef = useRef(null);
   const miniMapInstanceRef = useRef(null);
 
-  const API_URL = "http://localhost:5000";
+  const API_URL = API_BASE_URL;
 
   // Fetch pending applications and AI metrics from backend
   const fetchPendingData = async () => {

@@ -6,6 +6,8 @@ import { useLanguage } from "../context/LanguageContext";
 import { generateLandDossierPDF } from "../utils/pdfGenerator";
 import { QRCodeSVG } from "qrcode.react";
 import { UP_ADMIN_HIERARCHY } from "../data/upCadastralData";
+import { API_BASE_URL } from "../config/api";
+import LiveLocationService from "../services/liveLocationService";
 import KhatauniModal from "./KhatauniModal";
 import SearchSelectBox from "./SearchSelectBox";
 import {
@@ -237,7 +239,7 @@ export default function MapExplorer({
 
   // On-mount: Fetch all 75 Official UP Districts from Live Backend API
   useEffect(() => {
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const API_URL = API_BASE_URL;
     fetch(`${API_URL}/api/bhulekh/districts`)
       .then((r) => r.json())
       .then((d) => {
@@ -273,7 +275,7 @@ export default function MapExplorer({
 
     const timer = setTimeout(() => {
       setIsSearchingStatewide(true);
-      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const API_URL = API_BASE_URL;
       fetch(`${API_URL}/api/bhulekh/live-village-search?q=${encodeURIComponent(clean)}&limit=30`)
         .then((r) => r.json())
         .then((data) => {
@@ -298,7 +300,7 @@ export default function MapExplorer({
     }
 
     let isMounted = true;
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const API_URL = API_BASE_URL;
     setLoadingVillages(true);
 
     fetch(
@@ -460,7 +462,7 @@ export default function MapExplorer({
     }
 
     // Automatically load all Sub-Districts (Tehsils) belonging to that District from Live API
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const API_URL = API_BASE_URL;
     setIsLiveLoading(true);
     setLiveLoadingText("तहसील सूची लाइव सरकारी API से लोड हो रही है...");
 
@@ -525,7 +527,7 @@ export default function MapExplorer({
     }
 
     // Fetch Development Blocks for this specific Tehsil via Live API
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const API_URL = API_BASE_URL;
     setIsLiveLoading(true);
     setLiveLoadingText("विकास खंड (Blocks) लाइव LGD व डाक API से लोड हो रहे हैं...");
 
@@ -590,7 +592,7 @@ export default function MapExplorer({
     }
 
     // Fetch villages filtered specifically for this block via 3-source live harvester
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const API_URL = API_BASE_URL;
     setLoadingVillages(true);
     setIsLiveLoading(true);
     setLiveLoadingText(`विकास खंड ${bObj?.nameHi || newBlock} के सभी असली गाँव लाइव GIS व सरकारी APIs से लोड हो रहे हैं...`);
@@ -658,7 +660,7 @@ export default function MapExplorer({
     setActiveStepOpen(null);
 
     // Fetch Atomic Live Village Dossier (Nominatim + India Post + Overpass + 13-Column Khatauni)
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const API_URL = API_BASE_URL;
     setIsLiveLoading(true);
     setLiveLoadingText("लाइव API से असली डेटा निकाला जा रहा है...");
 
@@ -720,11 +722,87 @@ export default function MapExplorer({
         );
         setTimeout(() => setSearchNotification(""), 4500);
       } else {
-        setApiErrorMessage(data?.error || "लाइव सरकारी API से ग्राम का डोज़ियर प्राप्त करने में विफलता");
+        // Fallback: Direct Browser Live-API Resolution
+        const fallbackDossier = await LiveLocationService.buildDirectBrowserVillageDossier({
+          district: selectedDistrict,
+          tehsil: selectedTehsil,
+          block: vBlk,
+          village: vName,
+          khasra: "104",
+        });
+
+        if (fallbackDossier?.success && fallbackDossier.dossier) {
+          const d = fallbackDossier.dossier;
+          setActiveDossier(d);
+          setSelectedVillage(d.village);
+          setSelectedVillageObj({
+            nameEn: d.village,
+            nameHi: d.villageHi,
+            displayName: d.displayName,
+            pincode: d.pincode,
+            lat: d.lat,
+            lng: d.lng,
+            block: d.block,
+          });
+          setResolvedPincode(d.pincode);
+          setActiveVillageParcels(d.parcels || []);
+          setSelectedParcelId("104");
+          setHighlightedParcelId("104");
+          if (mapInstanceRef.current && d.lat && d.lng) {
+            mapInstanceRef.current.flyTo([d.lat, d.lng], 15.5, { duration: 1.6 });
+          }
+          setApiErrorMessage("");
+          setSearchNotification(
+            language === "hi"
+              ? `🌐 ब्राउज़र द्वारा सीधा लाइव डेटा लोड: ग्राम ${d.villageHi} • पिनकोड: ${d.pincode}`
+              : `🌐 Direct Browser Live Data: Village ${d.village} • PIN: ${d.pincode}`
+          );
+          setTimeout(() => setSearchNotification(""), 4500);
+        } else {
+          setApiErrorMessage(data?.error || "लाइव सरकारी API से ग्राम का डोज़ियर प्राप्त करने में विफलता");
+        }
       }
     } catch (e) {
       if (e.name !== "AbortError") {
-        console.warn("Village live dossier sync error:", e.message);
+        console.warn("Village live dossier sync error, trying direct browser fallback:", e.message);
+        try {
+          const fallbackDossier = await LiveLocationService.buildDirectBrowserVillageDossier({
+            district: selectedDistrict,
+            tehsil: selectedTehsil,
+            block: vBlk,
+            village: vName,
+            khasra: "104",
+          });
+          if (fallbackDossier?.success && fallbackDossier.dossier) {
+            const d = fallbackDossier.dossier;
+            setActiveDossier(d);
+            setSelectedVillage(d.village);
+            setSelectedVillageObj({
+              nameEn: d.village,
+              nameHi: d.villageHi,
+              displayName: d.displayName,
+              pincode: d.pincode,
+              lat: d.lat,
+              lng: d.lng,
+              block: d.block,
+            });
+            setResolvedPincode(d.pincode);
+            setActiveVillageParcels(d.parcels || []);
+            setSelectedParcelId("104");
+            setHighlightedParcelId("104");
+            if (mapInstanceRef.current && d.lat && d.lng) {
+              mapInstanceRef.current.flyTo([d.lat, d.lng], 15.5, { duration: 1.6 });
+            }
+            setApiErrorMessage("");
+            setSearchNotification(
+              language === "hi"
+                ? `🌐 ब्राउज़र द्वारा सीधा लाइव डेटा लोड: ग्राम ${d.villageHi} • पिनकोड: ${d.pincode}`
+                : `🌐 Direct Browser Live Data: Village ${d.village} • PIN: ${d.pincode}`
+            );
+            setTimeout(() => setSearchNotification(""), 4500);
+            return;
+          }
+        } catch (fbErr) {}
         setApiErrorMessage(`लाइव सरकारी व डाक API विफलता: ${e.message}`);
       }
     } finally {
@@ -1200,7 +1278,7 @@ export default function MapExplorer({
         showUserLocationOnMap(lat, lng, accuracy);
 
         try {
-          const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+          const API_URL = API_BASE_URL;
           const res = await fetch(`${API_URL}/api/bhulekh/live-village-dossier?lat=${lat}&lng=${lng}`, { signal });
           const data = await res.json();
           if (data.success && data.dossier) {
@@ -1291,7 +1369,7 @@ export default function MapExplorer({
     const vLat = activeDossier?.lat || "";
     const vLng = activeDossier?.lng || "";
 
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const API_URL = API_BASE_URL;
     setIsLiveLoading(true);
     setLiveLoadingText(`खसरा संख्या #${cleanK} का लाइव रिकॉर्ड निकाला जा रहा है...`);
 
@@ -1393,7 +1471,7 @@ export default function MapExplorer({
       }
 
       // 2. Register Escrow in Backend Queue
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const apiUrl = API_BASE_URL;
       const res = await fetch(`${apiUrl}/api/registrar/escrow/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

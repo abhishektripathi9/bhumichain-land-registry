@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE_URL } from "../config/api";
 import {
   Search,
   MapPin,
@@ -57,7 +58,7 @@ export default function Marketplace({ onInspectOnMap, onOpenKhatauni }) {
   const [buyerPhone, setBuyerPhone] = useState("");
   const [buySubmitting, setBuySubmitting] = useState(false);
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = API_BASE_URL;
 
   // Fetch listings from API
   const fetchListings = () => {
