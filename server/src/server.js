@@ -25,7 +25,9 @@ import registrarRoutes from "./routes/registrarRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 import bhulekhRoutes from "./routes/bhulekhRoutes.js";
 import systemRoutes from "./routes/systemRoutes.js";
-import { getVillages, getKhatauniNakal, liveVillageSearch, getPincode, getRealParcels, verifyBlockHarvest } from "./controllers/bhulekhController.js";
+import marketplaceRoutes from "./routes/marketplaceRoutes.js";
+import registryRoutes from "./routes/registryRoutes.js";
+import { getVillages, getKhatauniNakal, liveVillageSearch, getPincode, getRealParcels, verifyBlockHarvest, getKhasraHistory } from "./controllers/bhulekhController.js";
 import { saveChatMessage } from "./controllers/chatController.js";
 import { startBlockchainListener } from "./services/listenerService.js";
 import { liveGovDataService } from "./services/liveGovDataService.js";
@@ -71,6 +73,8 @@ app.use("/api/registrar", registrarRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/bhulekh", bhulekhRoutes);
 app.use("/api/system", systemRoutes);
+app.use("/api/marketplace", marketplaceRoutes);
+app.use("/api/registry", registryRoutes);
 
 // Health check endpoint
 app.get("/api/health", (req, res) => {
@@ -108,6 +112,7 @@ app.get("/api/bhulekh/khatauni", getKhatauniNakal);
 app.get("/api/bhulekh/live-village-search", liveVillageSearch);
 app.get("/api/bhulekh/pincode", getPincode);
 app.get("/api/bhulekh/real-parcels", getRealParcels);
+app.get("/api/bhulekh/khasra-history", getKhasraHistory);
 
 // Socket.io Real-Time Buyer-Seller Rooms (Layer 1)
 io.on("connection", (socket) => {

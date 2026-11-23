@@ -176,6 +176,7 @@ export default function Navbar({ activeTab, setActiveTab, onScanGPS, currentDist
 
   const navItems = [
     { id: "map", label: t("exploreMap") },
+    { id: "marketplace", label: language === "hi" ? "खेत खरीदें / बेचें" : "Buy & Sell Land" },
     { id: "register", label: t("registerLand") },
     { id: "my-properties", label: t("myProperties") },
     { id: "verify-qr", label: t("verifyQR") },

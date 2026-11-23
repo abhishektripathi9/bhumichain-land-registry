@@ -1,9 +1,9 @@
 {
   "version": "2.4.1",
   "modelName": "UP-Cadastre ValNet & FraudShield Ensemble",
-  "trainedParcelsCount": 59,
+  "trainedParcelsCount": 60,
   "trainedAccuracyPct": 95.1,
-  "lastTrainedAt": "2026-11-22T20:41:51.118Z",
+  "lastTrainedAt": "2026-11-23T10:53:06.210Z",
   "tehsilBaselineRates": {
     "Karchhana": 1730,
     "Sadar": 3480,

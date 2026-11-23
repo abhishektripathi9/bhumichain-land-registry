@@ -4,6 +4,7 @@ import MapExplorer from "./components/MapExplorer";
 import RegisterLand from "./components/RegisterLand";
 import MyProperties from "./components/MyProperties";
 import VerifyQR from "./components/VerifyQR";
+import Marketplace from "./components/Marketplace";
 import AdminPanel from "./pages/AdminPanel";
 import RegistrarConsole from "./pages/RegistrarConsole";
 import ChatModal from "./components/ChatModal";
@@ -94,6 +95,17 @@ export default function App() {
             currentDistrict={currentDistrict}
             onDistrictChange={(d) => setCurrentDistrict(d)}
           />
+        )}
+
+        {activeTab === "marketplace" && (
+          <div className="flex-1 overflow-y-auto">
+            <Marketplace
+              onInspectOnMap={handleInspectOnMap}
+              onOpenKhatauni={(parcel) => {
+                setActiveTab("map");
+              }}
+            />
+          </div>
         )}
 
         {activeTab === "register" && (

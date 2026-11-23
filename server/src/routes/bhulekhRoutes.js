@@ -13,6 +13,7 @@ import {
   getPincode,
   getRealParcels,
   verifyBlockHarvest,
+  getKhasraHistory,
 } from "../controllers/bhulekhController.js";
 
 const router = express.Router();
@@ -53,5 +54,8 @@ router.post("/import-lgd-villages", importLgdVillages);
 
 // 6. Full 13-Column UP Bhulekh Khatauni Nakal Engine
 router.get("/khatauni", getKhatauniNakal);
+
+// 7. Complete Chronological Ownership History ("पहले किसकी थी → आज किसकी है")
+router.get("/khasra-history", getKhasraHistory);
 
 export default router;

@@ -11,6 +11,7 @@ import { blockVillageHarvester } from "../services/blockVillageHarvester.js";
 import { allUpCitizenService } from "../services/allUpCitizenService.js";
 import { liveFirstResolver } from "../services/liveFirstResolver.js";
 import { resolveExactUPPincode } from "../services/verifiedPincodeService.js";
+import { KhasraHistoryService } from "../services/khasraHistoryService.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -825,6 +826,36 @@ export const getKhatauniNakal = async (req, res) => {
           isForSale: true,
         },
       },
+    });
+  }
+};
+
+/**
+ * 7. Complete Chronological Ownership History ("पहले किसकी थी → आज किसकी है")
+ * GET /api/bhulekh/khasra-history
+ */
+export const getKhasraHistory = async (req, res) => {
+  try {
+    const { district, tehsil, block, village, khasraNo, khasra, lat, lng } = req.query;
+    const cleanK = khasraNo || khasra || "104";
+
+    const history = await KhasraHistoryService.resolveKhasraHistory({
+      district: district || "Chitrakoot",
+      tehsil: tehsil || "Rajapur",
+      block: block || "Ramnagar",
+      village: village || "Ramnagar",
+      khasraNo: cleanK,
+      lat,
+      lng,
+    });
+
+    return res.status(200).json(history);
+  } catch (err) {
+    console.error("Error in getKhasraHistory controller:", err);
+    return res.status(500).json({
+      success: false,
+      message: "खसरा मालिकाना इतिहास प्राप्त करने में त्रुटि आई।",
+      error: err.message,
     });
   }
 };
