@@ -183,5 +183,12 @@
     "district": "Prayagraj",
     "postOfficeName": "Naini",
     "state": "Uttar Pradesh"
+  },
+  "banda:baberu:kamasin:mau:25.324:80.347": {
+    "pincode": "210129",
+    "source": "NOMINATIM_REVERSE_GEOCODE",
+    "district": "Banda",
+    "postOfficeName": "Mau",
+    "state": "Uttar Pradesh"
   }
 }

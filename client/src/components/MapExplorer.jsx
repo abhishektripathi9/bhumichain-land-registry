@@ -88,6 +88,7 @@ export default function MapExplorer({
   const [villageLetter, setVillageLetter] = useState("सभी (All)");
   const [khasraInput, setKhasraInput] = useState("");
   const [searchNotification, setSearchNotification] = useState("");
+  const [apiErrorMessage, setApiErrorMessage] = useState("");
   const [activeKhasraHistory, setActiveKhasraHistory] = useState(null);
   const villageDropdownRef = useRef(null);
 
@@ -610,16 +611,22 @@ export default function MapExplorer({
             setResolvedPincode(data.pincode);
           }
           setIsVillageDropdownOpen(true);
+          setApiErrorMessage("");
           setSearchNotification(
             language === "hi"
               ? `🌾 विकास खंड ${bObj?.nameHi || newBlock} • कुल ग्राम: ${vCount} उपलब्ध (स्रोत: OSM Overpass + India Post + data.gov.in)`
               : `🌾 Block ${newBlock} • Total Villages: ${vCount} available (Sources: OSM Overpass + India Post + data.gov.in)`
           );
           setTimeout(() => setSearchNotification(""), 6000);
+        } else if (data && !data.success) {
+          setApiErrorMessage(data.error || "ब्लॉक में ग्राम सूची प्राप्त नहीं हो सकी (Failed to load villages from external API)");
         }
       })
       .catch((e) => {
-        if (e.name !== "AbortError") console.warn("Block villages sync error:", e.message);
+        if (e.name !== "AbortError") {
+          console.warn("Block villages sync error:", e.message);
+          setApiErrorMessage(`ग्राम सूची लोड करने में बाहरी API त्रुटि: ${e.message}`);
+        }
       })
       .finally(() => {
         setLoadingVillages(false);
@@ -705,16 +712,20 @@ export default function MapExplorer({
           })
           .catch(() => {});
 
+        setApiErrorMessage("");
         setSearchNotification(
           language === "hi"
             ? `📍 ग्राम ${d.villageHi} (${d.village}) • पिनकोड: ${d.pincode} • भूलेख व खतौनी लाइव लोड हो गए`
             : `📍 Village ${d.village} • PIN: ${d.pincode} • Khatauni & Khasra loaded live`
         );
         setTimeout(() => setSearchNotification(""), 4500);
+      } else {
+        setApiErrorMessage(data?.error || "लाइव सरकारी API से ग्राम का डोज़ियर प्राप्त करने में विफलता");
       }
     } catch (e) {
       if (e.name !== "AbortError") {
         console.warn("Village live dossier sync error:", e.message);
+        setApiErrorMessage(`लाइव सरकारी व डाक API विफलता: ${e.message}`);
       }
     } finally {
       setIsLiveLoading(false);
@@ -1320,16 +1331,20 @@ export default function MapExplorer({
           })
           .catch(() => {});
 
+        setApiErrorMessage("");
         setSearchNotification(
           language === "hi"
             ? `🎯 गाटा सं. #${cleanK} का लाइव भूलेख व खतौनी रिकॉर्ड प्राप्त हुआ`
             : `🎯 Khasra #${cleanK} live record loaded`
         );
         setTimeout(() => setSearchNotification(""), 4500);
+      } else {
+        setApiErrorMessage(data?.error || `गाटा सं. #${cleanK} का लाइव रिकॉर्ड नहीं मिला (No live record found)`);
       }
     } catch (e) {
       if (e.name !== "AbortError") {
         console.warn("Khasra search error:", e.message);
+        setApiErrorMessage(`गाटा संख्या खोज में लाइव API विफलता: ${e.message}`);
       }
     } finally {
       setIsLiveLoading(false);
@@ -1450,6 +1465,30 @@ export default function MapExplorer({
 
       {/* 2. COMPACT SEARCH & REVENUE CONTROLS (Positioned Above Map to maximize height) */}
       <div className="bg-white border-b border-gray-200 px-4 py-2 space-y-2 flex-shrink-0 shadow-xs z-20">
+        {/* Real-time External API Error Alert Box */}
+        {apiErrorMessage && (
+          <div className="p-3 bg-red-600 text-white rounded-xl shadow-md border border-red-700 flex items-start justify-between animate-in fade-in duration-200">
+            <div className="flex items-start space-x-2.5">
+              <AlertTriangle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+              <div>
+                <span className="font-bold text-xs block">
+                  {language === "hi" ? "सरकारी व लाइव API विफलता (Live API Alert)" : "Live Government API Alert"}
+                </span>
+                <p className="text-xs text-red-100 mt-0.5 font-mono break-all">
+                  {apiErrorMessage}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => setApiErrorMessage("")}
+              className="text-white hover:text-red-200 p-1 rounded-lg hover:bg-red-700 cursor-pointer flex-shrink-0 ml-2"
+              title="खारिज करें (Dismiss)"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+
         {/* Row 1: Mode Switcher & Live Database Status */}
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center space-x-1.5">

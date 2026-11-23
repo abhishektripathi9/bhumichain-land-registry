@@ -316,8 +316,11 @@ async function queryIndiaPostLayer({ district, tehsil, block, village }) {
     const responses = await Promise.allSettled(
       queries.map((q) =>
         axios.get(`https://api.postalpincode.in/postoffice/${encodeURIComponent(q)}`, {
-          timeout: 4500,
-          headers: { "User-Agent": "BhumiChain-UP-Pincode-Verifier/1.0" },
+          timeout: 8000,
+          headers: {
+            "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (contact@bhumichain.in)",
+            "Accept-Language": "hi,en",
+          },
         })
       )
     );
@@ -446,8 +449,11 @@ async function queryNominatimLayer({ lat, lng, district }) {
     const res = await axios.get(
       `https://nominatim.openstreetmap.org/reverse?lat=${numLat}&lon=${numLng}&format=json&addressdetails=1`,
       {
-        timeout: 4000,
-        headers: { "User-Agent": "BhumiChain-UP-Pincode-Verifier/1.0" },
+        timeout: 8000,
+        headers: {
+          "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (contact@bhumichain.in)",
+          "Accept-Language": "hi,en",
+        },
       }
     );
 

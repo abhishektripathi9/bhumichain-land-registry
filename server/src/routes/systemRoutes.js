@@ -1,8 +1,40 @@
 import express from "express";
 import { allUpCitizenService } from "../services/allUpCitizenService.js";
 import { liveGovDataService } from "../services/liveGovDataService.js";
+import { RealApiFetcher } from "../services/realApiFetcher.js";
 
 const router = express.Router();
+
+/**
+ * Health-Check & Live External API Diagnostic Route
+ * GET /api/system/live-test?district=Chitrakoot&tehsil=Rajapur&block=Ramnagar&village=Bardwara
+ * Also supports /api/debug/live-test
+ */
+router.get(["/live-test", "/debug/live-test"], async (req, res) => {
+  try {
+    const {
+      district = "Chitrakoot",
+      tehsil = "Rajapur",
+      block = "Ramnagar",
+      village = "Bardwara",
+    } = req.query;
+
+    const report = await RealApiFetcher.runLiveDiagnostics({
+      district,
+      tehsil,
+      block,
+      village,
+    });
+
+    return res.status(200).json(report);
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      timestamp: new Date().toISOString(),
+      error: `Live Diagnostic Pipeline Error: ${err.message}`,
+    });
+  }
+});
 
 /**
  * Diagnostic Block Harvest Verification Route

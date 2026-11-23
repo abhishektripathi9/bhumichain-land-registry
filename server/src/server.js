@@ -31,6 +31,7 @@ import { getVillages, getKhatauniNakal, liveVillageSearch, getPincode, getRealPa
 import { saveChatMessage } from "./controllers/chatController.js";
 import { startBlockchainListener } from "./services/listenerService.js";
 import { liveGovDataService } from "./services/liveGovDataService.js";
+import { RealApiFetcher } from "./services/realApiFetcher.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -105,6 +106,33 @@ app.get(["/api/system/api-status", "/system/api-status", "/api/system-status"], 
 
 // Diagnostic Block Harvest Verification endpoint
 app.get("/api/system/verify-block", verifyBlockHarvest);
+
+// Live External API Pipeline Diagnostic & Health-Check endpoint
+app.get(["/api/debug/live-test", "/debug/live-test", "/api/system/live-test"], async (req, res) => {
+  try {
+    const {
+      district = "Chitrakoot",
+      tehsil = "Rajapur",
+      block = "Ramnagar",
+      village = "Bardwara",
+    } = req.query;
+
+    const report = await RealApiFetcher.runLiveDiagnostics({
+      district,
+      tehsil,
+      block,
+      village,
+    });
+
+    return res.status(200).json(report);
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      timestamp: new Date().toISOString(),
+      error: `Live Diagnostic Pipeline Error: ${err.message}`,
+    });
+  }
+});
 
 // Explicit direct mounts for bhulekh villages, khatauni, and live search
 app.get("/api/bhulekh/villages", getVillages);
