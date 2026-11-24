@@ -14,7 +14,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { generateLandDossierPDF } from "../utils/pdfGenerator";
-import { API_BASE_URL } from "../config/api";
+import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 
 export default function KhatauniModal({ isOpen, onClose, parcel, language = "hi" }) {
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,6 @@ export default function KhatauniModal({ isOpen, onClose, parcel, language = "hi"
     let isMounted = true;
     setLoading(true);
 
-    const API_URL = API_BASE_URL;
     const villageName = parcel.village || "Naini";
     const districtName = parcel.district || "Prayagraj";
     const tehsilName = parcel.tehsil || "Karchhana";
@@ -36,9 +35,11 @@ export default function KhatauniModal({ isOpen, onClose, parcel, language = "hi"
     const lng = parcel.center?.[1] || "";
 
     fetch(
-      `${API_URL}/api/bhulekh/khatauni?khasra=${encodeURIComponent(khasraNo)}&district=${encodeURIComponent(
-        districtName
-      )}&tehsil=${encodeURIComponent(tehsilName)}&block=${encodeURIComponent(blockName)}&village=${encodeURIComponent(villageName)}&lat=${lat}&lng=${lng}`
+      getApiUrl(
+        `bhulekh/khatauni?khasra=${encodeURIComponent(khasraNo)}&district=${encodeURIComponent(
+          districtName
+        )}&tehsil=${encodeURIComponent(tehsilName)}&block=${encodeURIComponent(blockName)}&village=${encodeURIComponent(villageName)}&lat=${lat}&lng=${lng}`
+      )
     )
       .then((r) => r.json())
       .then((res) => {

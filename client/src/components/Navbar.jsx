@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useWeb3 } from "../context/Web3Context";
 import { useLanguage } from "../context/LanguageContext";
-import { API_BASE_URL } from "../config/api";
+import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 import {
   ShieldCheck,
   Crosshair,
@@ -74,7 +74,7 @@ export default function Navbar({ activeTab, setActiveTab, onScanGPS, currentDist
     if (e) e.preventDefault();
     setAuthLoading(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/auth/login-citizen`, {
+      const res = await fetch(getApiUrl("auth/login-citizen"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: loginPhone }),
@@ -128,7 +128,7 @@ export default function Navbar({ activeTab, setActiveTab, onScanGPS, currentDist
     }
     setAuthLoading(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/auth/register-citizen`, {
+      const res = await fetch(getApiUrl("auth/register-citizen"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(regForm),

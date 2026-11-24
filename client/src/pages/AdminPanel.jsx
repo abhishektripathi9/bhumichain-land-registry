@@ -3,7 +3,7 @@ import L from "leaflet";
 import { ethers } from "ethers";
 import { useWeb3 } from "../context/Web3Context";
 import { generateLandDossierPDF } from "../utils/pdfGenerator";
-import { API_BASE_URL } from "../config/api";
+import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 import {
   ShieldCheck,
   CheckCircle,
@@ -248,14 +248,14 @@ export default function AdminPanel({ onNavigateToPublic }) {
 
   // Load real-time backend data
   const loadAdminData = () => {
-    fetch(`${apiUrl}/api/admin/escrow-deals`)
+    fetch(getApiUrl("admin/escrow-deals"))
       .then((r) => r.json())
       .then((d) => {
         if (d.success && d.deals) setEscrowDeals(d.deals);
       })
       .catch((err) => console.warn("Failed to load escrow deals:", err));
 
-    fetch(`${apiUrl}/api/properties`)
+    fetch(getApiUrl("properties"))
       .then((r) => r.json())
       .then((d) => {
         if (d.success && d.properties) setAllParcels(d.properties);
@@ -333,7 +333,7 @@ export default function AdminPanel({ onNavigateToPublic }) {
         await tx.wait();
       }
 
-      await fetch(`${apiUrl}/api/admin/verify/${activeApp.id}`, {
+      await fetch(getApiUrl(`admin/verify/${activeApp.id}`), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ approved: true }),

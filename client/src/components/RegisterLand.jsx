@@ -3,7 +3,7 @@ import L from "leaflet";
 import "leaflet-draw";
 import { ethers } from "ethers";
 import { useWeb3 } from "../context/Web3Context";
-import { API_BASE_URL } from "../config/api";
+import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 import {
   FilePlus,
   UploadCloud,
@@ -187,7 +187,7 @@ export default function RegisterLand({ onRegistrationSuccess }) {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${apiUrl}/api/ipfs/upload`, {
+      const response = await fetch(getApiUrl("ipfs/upload"), {
         method: "POST",
         body: formData,
       });
@@ -293,7 +293,7 @@ export default function RegisterLand({ onRegistrationSuccess }) {
         status: "Pending",
       };
 
-      const res = await fetch(`${apiUrl}/api/properties/register`, {
+      const res = await fetch(getApiUrl("properties/register"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

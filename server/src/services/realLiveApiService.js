@@ -372,7 +372,7 @@ class RealLiveApiService {
     ];
 
     const headers = {
-      "User-Agent": "BhumiChain-UP-GIS/1.0 (UP Sovereign Land Registry; contact@bhumichain.gov)",
+      "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
       "Accept": "application/json",
     };
 
@@ -558,7 +558,7 @@ class RealLiveApiService {
       )}&format=json&addressdetails=1&limit=20`;
 
       const headers = {
-        "User-Agent": "BhumiChain-UP-GIS/1.0 (UP Sovereign Land Registry; contact@bhumichain.gov)",
+        "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
         "Accept": "application/json",
       };
 
@@ -704,7 +704,7 @@ class RealLiveApiService {
         mirrors.map((url) =>
           axios
             .get(url, {
-              headers: { "User-Agent": "BhumiChain-UP-GIS/1.0" },
+              headers: { "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)" },
               timeout: 1900,
             })
             .then((res) => {
@@ -839,3 +839,4 @@ class RealLiveApiService {
 }
 
 export const realLiveApiService = new RealLiveApiService();
+

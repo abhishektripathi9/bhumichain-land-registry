@@ -214,5 +214,41 @@
     "block": "Ramnagar",
     "village": "Bardwara",
     "verified": true
+  },
+  "Chitrakoot_Rajapur_Ramnagar___": {
+    "pincode": "210207",
+    "postOfficeName": "Rajapur (Chitrakoot)",
+    "deliveryStatus": "Delivery",
+    "source": "INDIA_POST_VERIFIED",
+    "matchLevel": "TEHSIL_HEAD_OFFICE",
+    "district": "Chitrakoot",
+    "tehsil": "Rajapur",
+    "block": "Ramnagar",
+    "village": "",
+    "verified": true
+  },
+  "Chitrakoot_Rajapur_Ramnagar_Bardwara_25.297_81.146": {
+    "pincode": "210207",
+    "postOfficeName": "Bardwara",
+    "deliveryStatus": "Delivery",
+    "source": "INDIA_POST_VERIFIED",
+    "matchLevel": "VILLAGE_BRANCH_OFFICE",
+    "district": "Chitrakoot",
+    "tehsil": "Rajapur",
+    "block": "Ramnagar",
+    "village": "Bardwara",
+    "verified": true
+  },
+  "Chitrakoot___Bardwara__": {
+    "pincode": "210207",
+    "postOfficeName": "Bardwara",
+    "deliveryStatus": "Delivery",
+    "source": "INDIA_POST_VERIFIED",
+    "matchLevel": "VILLAGE_BRANCH_OFFICE",
+    "district": "Chitrakoot",
+    "tehsil": "",
+    "block": "",
+    "village": "Bardwara",
+    "verified": true
   }
 }

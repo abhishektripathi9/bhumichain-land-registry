@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { useWeb3 } from "../context/Web3Context";
-import { API_BASE_URL } from "../config/api";
+import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 import {
   Building,
   Tag,
@@ -48,8 +48,8 @@ export default function MyProperties({ onSelectParcel, onOpenChat }) {
     setLoading(true);
 
     Promise.all([
-      fetch(`${apiUrl}/api/properties?ownerWallet=${account.toLowerCase()}`).then((r) => r.json()),
-      fetch(`${apiUrl}/api/admin/escrow-deals`).then((r) => r.json()),
+      fetch(getApiUrl(`properties?ownerWallet=${account.toLowerCase()}`)).then((r) => r.json()),
+      fetch(getApiUrl("admin/escrow-deals")).then((r) => r.json()),
     ])
       .then(([propData, dealData]) => {
         if (propData.success && propData.properties) {
@@ -106,7 +106,7 @@ export default function MyProperties({ onSelectParcel, onOpenChat }) {
     setStatusMsg("");
 
     try {
-      const res = await fetch(`${apiUrl}/api/properties/${privacyModalParcel._id}/privacy`, {
+      const res = await fetch(getApiUrl(`properties/${privacyModalParcel._id}/privacy`), {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -155,7 +155,7 @@ export default function MyProperties({ onSelectParcel, onOpenChat }) {
         await tx.wait();
       }
 
-      await fetch(`${apiUrl}/api/properties/${parcel._id}/sale`, {
+      await fetch(getApiUrl(`properties/${parcel._id}/sale`), {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import { useWeb3 } from "../context/Web3Context";
-import { API_BASE_URL } from "../config/api";
+import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 import {
   X,
   Send,
@@ -33,7 +33,7 @@ export default function ChatModal({ parcel, onClose }) {
     if (!propertyId) return;
 
     // 1. Fetch past chat history
-    fetch(`${apiUrl}/api/messages/property/${propertyId}`)
+    fetch(getApiUrl(`messages/property/${propertyId}`))
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.messages) {

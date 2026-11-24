@@ -63,22 +63,27 @@ if (!fs.existsSync(uploadsPath)) {
 }
 app.use("/uploads", express.static(uploadsPath));
 
-// API Routes (Layer 1)
-app.use("/api/auth", authRoutes);
-app.use("/api/properties", propertyRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/messages", chatRoutes);
-app.use("/api/chat", chatRoutes);
-app.use("/api/ipfs", ipfsRoutes);
-app.use("/api/registrar", registrarRoutes);
-app.use("/api/ai", aiRoutes);
-app.use("/api/bhulekh", bhulekhRoutes);
-app.use("/api/system", systemRoutes);
-app.use("/api/marketplace", marketplaceRoutes);
-app.use("/api/registry", registryRoutes);
+// API Routes (Layer 1) - Mounted at root /api AND /land-registry/api
+const mountApiRoutes = (prefix) => {
+  app.use(`${prefix}/auth`, authRoutes);
+  app.use(`${prefix}/properties`, propertyRoutes);
+  app.use(`${prefix}/admin`, adminRoutes);
+  app.use(`${prefix}/messages`, chatRoutes);
+  app.use(`${prefix}/chat`, chatRoutes);
+  app.use(`${prefix}/ipfs`, ipfsRoutes);
+  app.use(`${prefix}/registrar`, registrarRoutes);
+  app.use(`${prefix}/ai`, aiRoutes);
+  app.use(`${prefix}/bhulekh`, bhulekhRoutes);
+  app.use(`${prefix}/system`, systemRoutes);
+  app.use(`${prefix}/marketplace`, marketplaceRoutes);
+  app.use(`${prefix}/registry`, registryRoutes);
+};
+
+mountApiRoutes("/api");
+mountApiRoutes("/land-registry/api");
 
 // Health check endpoint
-app.get("/api/health", (req, res) => {
+app.get(["/api/health", "/land-registry/api/health"], (req, res) => {
   res.json({
     status: "healthy",
     dapp: "BhumiChain Land Registry API",
@@ -94,7 +99,7 @@ app.get("/api/health", (req, res) => {
 });
 
 // Diagnostic System & data.gov.in Live API Status endpoint (Direct Mounts)
-app.get(["/api/system/api-status", "/system/api-status", "/api/system-status"], (req, res) => {
+app.get(["/api/system/api-status", "/land-registry/api/system/api-status", "/system/api-status", "/api/system-status"], (req, res) => {
   const diag = liveGovDataService.getDiagnosticStatus();
   res.json({
     status: "ok",
@@ -105,10 +110,10 @@ app.get(["/api/system/api-status", "/system/api-status", "/api/system-status"], 
 });
 
 // Diagnostic Block Harvest Verification endpoint
-app.get("/api/system/verify-block", verifyBlockHarvest);
+app.get(["/api/system/verify-block", "/land-registry/api/system/verify-block"], verifyBlockHarvest);
 
 // Live External API Pipeline Diagnostic & Health-Check endpoint
-app.get(["/api/debug/live-test", "/debug/live-test", "/api/system/live-test"], async (req, res) => {
+app.get(["/api/debug/live-test", "/land-registry/api/debug/live-test", "/debug/live-test", "/api/system/live-test"], async (req, res) => {
   try {
     const {
       district = "Chitrakoot",
@@ -135,21 +140,30 @@ app.get(["/api/debug/live-test", "/debug/live-test", "/api/system/live-test"], a
 });
 
 // Explicit direct mounts for bhulekh villages, khatauni, and live search
-app.get("/api/bhulekh/villages", getVillages);
-app.get("/api/bhulekh/khatauni", getKhatauniNakal);
-app.get("/api/bhulekh/live-village-search", liveVillageSearch);
-app.get("/api/bhulekh/pincode", getPincode);
-app.get("/api/bhulekh/real-parcels", getRealParcels);
-app.get("/api/bhulekh/khasra-history", getKhasraHistory);
+app.get(["/api/bhulekh/villages", "/land-registry/api/bhulekh/villages"], getVillages);
+app.get(["/api/bhulekh/khatauni", "/land-registry/api/bhulekh/khatauni"], getKhatauniNakal);
+app.get(["/api/bhulekh/live-village-search", "/land-registry/api/bhulekh/live-village-search"], liveVillageSearch);
+app.get(["/api/bhulekh/pincode", "/land-registry/api/bhulekh/pincode"], getPincode);
+app.get(["/api/bhulekh/real-parcels", "/land-registry/api/bhulekh/real-parcels"], getRealParcels);
+app.get(["/api/bhulekh/khasra-history", "/land-registry/api/bhulekh/khasra-history"], getKhasraHistory);
 
-// Serve built React frontend at /land-registry and root
+// API 404 guard - guarantees that unhandled /api/* calls NEVER fall through to HTML!
+app.all(["/api/*", "/land-registry/api/*"], (req, res) => {
+  res.status(404).json({
+    success: false,
+    error: `API route not found: ${req.method} ${req.originalUrl}`,
+  });
+});
+
+// Serve built React frontend at /land-registry and root (MOUNTED STRICTLY AFTER ALL API ROUTES)
 const clientDistPath = path.join(__dirname, "../../client/dist");
 if (fs.existsSync(clientDistPath)) {
   app.use("/land-registry", express.static(clientDistPath));
   app.use(express.static(clientDistPath));
 
   app.get(["/land-registry", "/land-registry/*", "/admin", "/admin/*"], (req, res, next) => {
-    if (req.path.startsWith("/api/")) return next();
+    // If request contains /api/, never serve index.html!
+    if (req.path.includes("/api/")) return next();
     res.sendFile(path.join(clientDistPath, "index.html"));
   });
 }

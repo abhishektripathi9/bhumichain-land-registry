@@ -318,7 +318,7 @@ async function queryIndiaPostLayer({ district, tehsil, block, village }) {
         axios.get(`https://api.postalpincode.in/postoffice/${encodeURIComponent(q)}`, {
           timeout: 8000,
           headers: {
-            "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (contact@bhumichain.in)",
+            "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
             "Accept-Language": "hi,en",
           },
         })
@@ -451,7 +451,7 @@ async function queryNominatimLayer({ lat, lng, district }) {
       {
         timeout: 8000,
         headers: {
-          "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (contact@bhumichain.in)",
+          "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
           "Accept-Language": "hi,en",
         },
       }
@@ -468,7 +468,7 @@ async function queryNominatimLayer({ lat, lng, district }) {
     // Verify postcode against India Post API to confirm State and District match
     const poVerify = await axios.get(`https://api.postalpincode.in/pincode/${postcode}`, {
       timeout: 3500,
-      headers: { "User-Agent": "BhumiChain-UP-Pincode-Verifier/1.0" },
+      headers: { "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)" },
     });
 
     const entries = poVerify.data?.[0];
@@ -619,3 +619,4 @@ export default {
   VALID_UP_DISTRICT_PIN_PREFIXES,
   UP_DISTRICT_PINCODE_MASTER,
 };
+

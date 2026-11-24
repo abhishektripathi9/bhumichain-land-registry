@@ -290,7 +290,7 @@ class AllUpCitizenService {
       try {
         const res = await axios.get("https://nominatim.openstreetmap.org/search", {
           params: { q, format: "json", limit: 1, addressdetails: 1 },
-          headers: { "User-Agent": "BhumiChain-UP-GIS/1.0 (contact@bhumichain.gov)" },
+          headers: { "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)" },
           timeout: 4000,
         });
 
@@ -342,7 +342,7 @@ class AllUpCitizenService {
         axios
           .get(url, {
             headers: {
-              "User-Agent": "BhumiChain-UP-GIS/1.0 (UP Sovereign Land Registry; contact@bhumichain.gov)",
+              "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
               "Accept": "application/json",
             },
             timeout: 12000,
@@ -831,7 +831,7 @@ class AllUpCitizenService {
           addressdetails: 1,
           limit: 15,
         },
-        headers: { "User-Agent": "BhumiChain-UP-GIS/1.0" },
+        headers: { "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)" },
         timeout: 2200,
       });
 
@@ -879,3 +879,4 @@ class AllUpCitizenService {
 
 export const allUpCitizenService = new AllUpCitizenService();
 export default allUpCitizenService;
+

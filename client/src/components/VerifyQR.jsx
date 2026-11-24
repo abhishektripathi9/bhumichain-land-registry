@@ -19,7 +19,7 @@ import {
   Layers,
 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import { API_BASE_URL } from "../config/api";
+import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 
 export default function VerifyQR({ onInspectOnMap }) {
   const { language } = useLanguage();
@@ -28,8 +28,6 @@ export default function VerifyQR({ onInspectOnMap }) {
   const [verifiedResult, setVerifiedResult] = useState(null);
   const [searched, setSearched] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const API_URL = API_BASE_URL;
 
   const handleVerifyLookup = async (e) => {
     e?.preventDefault();
@@ -44,14 +42,14 @@ export default function VerifyQR({ onInspectOnMap }) {
     setSearched(true);
 
     try {
-      const res = await fetch(`${API_URL}/api/registry/verify/${encodeURIComponent(query)}`);
+      const res = await fetch(getApiUrl(`registry/verify/${encodeURIComponent(query)}`));
       const data = await res.json();
 
       if (data.success && data.record) {
         setVerifiedResult(data);
       } else {
         // Fallback search with query params
-        const res2 = await fetch(`${API_URL}/api/registry/verify?khasra=${encodeURIComponent(query)}&village=${encodeURIComponent(query)}`);
+        const res2 = await fetch(getApiUrl(`registry/verify?khasra=${encodeURIComponent(query)}&village=${encodeURIComponent(query)}`));
         const data2 = await res2.json();
         if (data2.success && data2.record) {
           setVerifiedResult(data2);
@@ -75,7 +73,7 @@ export default function VerifyQR({ onInspectOnMap }) {
     setErrorMessage("");
     setSearched(true);
 
-    fetch(`${API_URL}/api/registry/verify/${encodeURIComponent(certId)}`)
+    fetch(getApiUrl(`registry/verify/${encodeURIComponent(certId)}`))
       .then((r) => r.json())
       .then((data) => {
         if (data.success && data.record) {

@@ -240,7 +240,7 @@ export async function resolvePincode({ village = "", block = "", tehsil = "", di
     try {
       const nomUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=14&addressdetails=1`;
       const res = await fetch(nomUrl, {
-        headers: { "User-Agent": "BhumiChain-UP-Land-Registry-Gov/2.0" },
+        headers: { "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)" },
         signal: AbortSignal.timeout(2200),
       });
       if (res.ok) {
@@ -354,3 +354,4 @@ export const pincodeAndLocationService = {
 };
 
 export default pincodeAndLocationService;
+

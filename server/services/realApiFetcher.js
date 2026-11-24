@@ -7,7 +7,7 @@ import axios from "axios";
  */
 
 const NOMINATIM_HEADERS = {
-  "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (contact@bhumichain.in)",
+  "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
   "Accept-Language": "hi,en",
 };
 
@@ -439,3 +439,4 @@ export class RealApiFetcher {
   }
 }
 export default RealApiFetcher;
+

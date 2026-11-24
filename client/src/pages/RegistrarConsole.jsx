@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import { useWeb3 } from "../context/Web3Context";
 import contractDeployment from "../contracts/contractInfo.json";
 import { generateLandDossierPDF } from "../utils/pdfGenerator";
-import { API_BASE_URL } from "../config/api";
+import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 import {
   ShieldCheck,
   CheckCircle,
@@ -110,7 +110,7 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
   const fetchPendingData = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch(`${API_URL}/api/registrar/pending`);
+      const res = await fetch(getApiUrl("registrar/pending"));
       if (res.ok) {
         const data = await res.json();
         setApplications(data.applications || []);
@@ -127,7 +127,7 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
   // Fetch escrows
   const fetchEscrows = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/registrar/escrows`);
+      const res = await fetch(getApiUrl("registrar/escrows"));
       if (res.ok) {
         const data = await res.json();
         setEscrows(data.escrows || []);
@@ -250,7 +250,7 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
       }
 
       // Notify backend
-      const res = await fetch(`${API_URL}/api/registrar/approve`, {
+      const res = await fetch(getApiUrl("registrar/approve"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -289,7 +289,7 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
     if (!activeApp) return;
     setIsRejecting(true);
     try {
-      const res = await fetch(`${API_URL}/api/registrar/reject`, {
+      const res = await fetch(getApiUrl("registrar/reject"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -318,7 +318,7 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
     setIsRetrainingAI(true);
     setRetrainSuccessMsg("");
     try {
-      const res = await fetch(`${API_URL}/api/ai/retrain`, { method: "POST" });
+      const res = await fetch(getApiUrl("ai/retrain"), { method: "POST" });
       if (res.ok) {
         const data = await res.json();
         setAiMetrics(data.metrics);
@@ -339,7 +339,7 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
   const handleFetchOverpass = async () => {
     setIsFetchingOverpass(true);
     try {
-      const res = await fetch(`${API_URL}/api/registrar/fetch-live-up`, {
+      const res = await fetch(getApiUrl("registrar/fetch-live-up"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -397,7 +397,7 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
         txHash = `0x${Date.now().toString(16)}78a${Math.random().toString(16).slice(2, 8)}escrowtransfer`;
       }
 
-      const res = await fetch(`${API_URL}/api/registrar/escrow/release`, {
+      const res = await fetch(getApiUrl("registrar/escrow/release"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ escrowId, txHash }),
@@ -430,13 +430,13 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
       if (file.name.toLowerCase().endsWith(".pdf")) {
         const formData = new FormData();
         formData.append("pdfFile", file);
-        res = await fetch(`${API_URL}/api/registrar/upload-khatauni-pdf`, {
+        res = await fetch(getApiUrl("registrar/upload-khatauni-pdf"), {
           method: "POST",
           body: formData,
         });
       } else {
         const text = await file.text();
-        res = await fetch(`${API_URL}/api/registrar/import-data`, {
+        res = await fetch(getApiUrl("registrar/import-data"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -1147,7 +1147,7 @@ export default function RegistrarConsole({ onNavigateToPublic }) {
                 <button
                   onClick={async () => {
                     const nextState = !p.isDisputed;
-                    const res = await fetch(`${API_URL}/api/registrar/dispute`, {
+                    const res = await fetch(getApiUrl("registrar/dispute"), {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({

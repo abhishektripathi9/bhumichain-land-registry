@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { API_BASE_URL } from "../config/api";
+import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 import {
   Search,
   MapPin,
@@ -58,12 +58,10 @@ export default function Marketplace({ onInspectOnMap, onOpenKhatauni }) {
   const [buyerPhone, setBuyerPhone] = useState("");
   const [buySubmitting, setBuySubmitting] = useState(false);
 
-  const API_URL = API_BASE_URL;
-
   // Fetch listings from API
   const fetchListings = () => {
     setLoading(true);
-    fetch(`${API_URL}/api/marketplace/listings`)
+    fetch(getApiUrl("marketplace/listings"))
       .then((r) => r.json())
       .then((data) => {
         if (data.success && Array.isArray(data.listings)) {
@@ -107,7 +105,7 @@ export default function Marketplace({ onInspectOnMap, onOpenKhatauni }) {
         features: formData.features.split(",").map((s) => s.trim()).filter(Boolean),
       };
 
-      const res = await fetch(`${API_URL}/api/marketplace/list-for-sale`, {
+      const res = await fetch(getApiUrl("marketplace/list-for-sale"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -152,7 +150,7 @@ export default function Marketplace({ onInspectOnMap, onOpenKhatauni }) {
     setBuySubmitting(true);
 
     try {
-      const res = await fetch(`${API_URL}/api/marketplace/complete-purchase`, {
+      const res = await fetch(getApiUrl("marketplace/complete-purchase"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

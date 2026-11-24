@@ -479,7 +479,7 @@ class LiveGovDataService {
     ];
 
     const headers = {
-      "User-Agent": "BhumiChain-UP-Cadastre/1.0 (UP Sovereign Land Registry; contact@bhumichain.gov)",
+      "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
       "Accept": "application/json",
     };
 
@@ -591,7 +591,7 @@ class LiveGovDataService {
       )}&format=json&addressdetails=1&limit=25`;
 
       const headers = {
-        "User-Agent": "BhumiChain-UP-Cadastre/1.0 (UP Sovereign Land Registry; contact@bhumichain.gov)",
+        "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
         "Accept": "application/json",
       };
 
@@ -713,7 +713,7 @@ class LiveGovDataService {
         mirrors.map((url) =>
           axios
             .get(url, {
-              headers: { "User-Agent": "BhumiChain-UP-Cadastre/1.0" },
+              headers: { "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)" },
               timeout: 1800,
             })
             .then((res) => {
@@ -800,3 +800,4 @@ class LiveGovDataService {
 }
 
 export const liveGovDataService = new LiveGovDataService();
+
