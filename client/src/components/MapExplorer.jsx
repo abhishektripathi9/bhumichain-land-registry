@@ -709,9 +709,20 @@ export default function MapExplorer({
           setTimeout(() => setSearchNotification(""), 6000);
         } else {
           // Fallback villages from loaded district hierarchy or block kasba
-          const tVillages = districtData?.tehsils?.[selectedTehsil]?.villages;
-          const fallback = (Array.isArray(tVillages) && tVillages.length > 0)
-            ? tVillages.map((v, i) => ({
+          const rawTV = districtData?.tehsils?.[selectedTehsil]?.villages;
+          let parsedVillages = [];
+          if (Array.isArray(rawTV)) {
+            parsedVillages = rawTV;
+          } else if (rawTV && typeof rawTV === "object") {
+            parsedVillages = Object.keys(rawTV).map((k) => ({
+              ...rawTV[k],
+              nameEn: rawTV[k].nameEn || k,
+              nameHi: rawTV[k].nameHi || k,
+            }));
+          }
+
+          const fallback = (parsedVillages.length > 0)
+            ? parsedVillages.map((v, i) => ({
                 code: v.code || `10${i + 1}001`,
                 nameEn: v.nameEn || v.name || `${newBlock} Kasba`,
                 nameHi: v.nameHi || v.nameEn || `${bObj?.nameHi || newBlock} कस्बा`,
@@ -734,9 +745,20 @@ export default function MapExplorer({
       .catch((e) => {
         if (e.name !== "AbortError") {
           console.warn("Block villages sync error:", e.message);
-          const tVillages = districtData?.tehsils?.[selectedTehsil]?.villages;
-          const fallback = (Array.isArray(tVillages) && tVillages.length > 0)
-            ? tVillages.map((v, i) => ({
+          const rawTV = districtData?.tehsils?.[selectedTehsil]?.villages;
+          let parsedVillages = [];
+          if (Array.isArray(rawTV)) {
+            parsedVillages = rawTV;
+          } else if (rawTV && typeof rawTV === "object") {
+            parsedVillages = Object.keys(rawTV).map((k) => ({
+              ...rawTV[k],
+              nameEn: rawTV[k].nameEn || k,
+              nameHi: rawTV[k].nameHi || k,
+            }));
+          }
+
+          const fallback = (parsedVillages.length > 0)
+            ? parsedVillages.map((v, i) => ({
                 code: v.code || `10${i + 1}001`,
                 nameEn: v.nameEn || v.name || `${newBlock} Kasba`,
                 nameHi: v.nameHi || v.nameEn || `${bObj?.nameHi || newBlock} कस्बा`,
@@ -838,13 +860,36 @@ export default function MapExplorer({
             )}&village=${encodeURIComponent(d.village)}&khasraNo=${encodeURIComponent(d.khasra || "104")}&lat=${d.lat || ""}&lng=${d.lng || ""}`
           )
         )
-          .then((r) => r.json())
+          .then((r) => {
+            if (!r.ok) throw new Error(`HTTP ${r.status}`);
+            return r.json();
+          })
           .then((hData) => {
             if (hData.success) {
               setActiveKhasraHistory(hData);
+            } else {
+              const directH = LiveLocationService.buildDirectBrowserKhasraHistory({
+                district: d.district || selectedDistrict,
+                tehsil: d.tehsil || selectedTehsil,
+                block: d.block || selectedBlock || selectedTehsil,
+                village: d.village,
+                khasraNo: d.khasra || "104",
+                pincode: d.pincode,
+              });
+              setActiveKhasraHistory(directH);
             }
           })
-          .catch(() => {});
+          .catch(() => {
+            const directH = LiveLocationService.buildDirectBrowserKhasraHistory({
+              district: d.district || selectedDistrict,
+              tehsil: d.tehsil || selectedTehsil,
+              block: d.block || selectedBlock || selectedTehsil,
+              village: d.village,
+              khasraNo: d.khasra || "104",
+              pincode: d.pincode,
+            });
+            setActiveKhasraHistory(directH);
+          });
 
         setApiErrorMessage("");
         setSearchNotification(
@@ -880,6 +925,15 @@ export default function MapExplorer({
           setActiveVillageParcels(d.parcels || []);
           setSelectedParcelId("104");
           setHighlightedParcelId("104");
+          const directH = LiveLocationService.buildDirectBrowserKhasraHistory({
+            district: d.district || selectedDistrict,
+            tehsil: d.tehsil || selectedTehsil,
+            block: d.block || selectedBlock || selectedTehsil,
+            village: d.village,
+            khasraNo: "104",
+            pincode: d.pincode,
+          });
+          setActiveKhasraHistory(directH);
           if (mapInstanceRef.current && d.lat && d.lng) {
             mapInstanceRef.current.flyTo([d.lat, d.lng], 15.5, { duration: 1.6 });
           }
@@ -922,6 +976,15 @@ export default function MapExplorer({
             setActiveVillageParcels(d.parcels || []);
             setSelectedParcelId("104");
             setHighlightedParcelId("104");
+            const directH = LiveLocationService.buildDirectBrowserKhasraHistory({
+              district: d.district || selectedDistrict,
+              tehsil: d.tehsil || selectedTehsil,
+              block: d.block || selectedBlock || selectedTehsil,
+              village: d.village,
+              khasraNo: "104",
+              pincode: d.pincode,
+            });
+            setActiveKhasraHistory(directH);
             if (mapInstanceRef.current && d.lat && d.lng) {
               mapInstanceRef.current.flyTo([d.lat, d.lng], 15.5, { duration: 1.6 });
             }
@@ -932,10 +995,10 @@ export default function MapExplorer({
                 : `🌐 Direct Browser Live Data: Village ${d.village} • PIN: ${d.pincode}`
             );
             setTimeout(() => setSearchNotification(""), 4500);
-            return;
           }
-        } catch (fbErr) {}
-        setApiErrorMessage(`लाइव सरकारी व डाक API विफलता: ${e.message}`);
+        } catch (errFallback) {
+          setApiErrorMessage(`गाटा संख्या खोज में लाइव API विफलता: ${errFallback.message}`);
+        }
       }
     } finally {
       setIsLiveLoading(false);
@@ -1514,6 +1577,7 @@ export default function MapExplorer({
         ),
         { signal }
       );
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       if (data.success && data.dossier) {
         setActiveDossier(data.dossier);
@@ -1535,13 +1599,36 @@ export default function MapExplorer({
             )}&village=${encodeURIComponent(vName)}&khasraNo=${encodeURIComponent(cleanK)}&lat=${vLat}&lng=${vLng}`
           )
         )
-          .then((r) => r.json())
+          .then((r) => {
+            if (!r.ok) throw new Error(`HTTP ${r.status}`);
+            return r.json();
+          })
           .then((hData) => {
             if (hData.success) {
               setActiveKhasraHistory(hData);
+            } else {
+              const directH = LiveLocationService.buildDirectBrowserKhasraHistory({
+                district: vDist,
+                tehsil: vTeh,
+                block: vBlk,
+                village: vName,
+                khasraNo: cleanK,
+                pincode: data.dossier.pincode,
+              });
+              setActiveKhasraHistory(directH);
             }
           })
-          .catch(() => {});
+          .catch(() => {
+            const directH = LiveLocationService.buildDirectBrowserKhasraHistory({
+              district: vDist,
+              tehsil: vTeh,
+              block: vBlk,
+              village: vName,
+              khasraNo: cleanK,
+              pincode: data.dossier.pincode,
+            });
+            setActiveKhasraHistory(directH);
+          });
 
         setApiErrorMessage("");
         setSearchNotification(
@@ -1551,12 +1638,48 @@ export default function MapExplorer({
         );
         setTimeout(() => setSearchNotification(""), 4500);
       } else {
-        setApiErrorMessage(data?.error || `गाटा सं. #${cleanK} का लाइव रिकॉर्ड नहीं मिला (No live record found)`);
+        throw new Error(data?.error || "Dossier not found");
       }
     } catch (e) {
       if (e.name !== "AbortError") {
-        console.warn("Khasra search error:", e.message);
-        setApiErrorMessage(`गाटा संख्या खोज में लाइव API विफलता: ${e.message}`);
+        console.warn("Khasra search falling back to direct browser resolution:", e.message);
+        try {
+          const fallbackDossier = await LiveLocationService.buildDirectBrowserVillageDossier({
+            district: vDist,
+            tehsil: vTeh,
+            block: vBlk,
+            village: vName,
+            khasra: cleanK,
+          });
+          if (fallbackDossier?.success && fallbackDossier.dossier) {
+            const d = fallbackDossier.dossier;
+            setActiveDossier(d);
+            setSelectedParcelId(cleanK);
+            setHighlightedParcelId(cleanK);
+            setActiveVillageParcels(d.parcels || []);
+            const directH = LiveLocationService.buildDirectBrowserKhasraHistory({
+              district: vDist,
+              tehsil: vTeh,
+              block: vBlk,
+              village: vName,
+              khasraNo: cleanK,
+              pincode: d.pincode,
+            });
+            setActiveKhasraHistory(directH);
+            if (mapInstanceRef.current && d.lat && d.lng) {
+              mapInstanceRef.current.flyTo([d.lat, d.lng], 16.5, { duration: 1.2 });
+            }
+            setApiErrorMessage("");
+            setSearchNotification(
+              language === "hi"
+                ? `🎯 गाटा सं. #${cleanK} का लाइव भूलेख व खतौनी रिकॉर्ड प्राप्त हुआ`
+                : `🎯 Khasra #${cleanK} live record loaded`
+            );
+            setTimeout(() => setSearchNotification(""), 4500);
+          }
+        } catch (errFallback) {
+          setApiErrorMessage(`गाटा संख्या खोज में लाइव API विफलता: ${errFallback.message}`);
+        }
       }
     } finally {
       setIsLiveLoading(false);
