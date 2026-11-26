@@ -124,7 +124,7 @@ export default function SearchSelectBox({
       nameEn: cleanEn || nameEn,
       nameHi: cleanHi || nameHi,
       displayName,
-      subtitle: item.pincode ? `पिन: ${item.pincode}` : item.tehsil ? `तहसील: ${item.tehsil}` : item.block ? `ब्लॉक: ${item.block}` : "",
+      subtitle: item.subtitle || (item.pincode ? `पिन: ${item.pincode}` : item.tehsil ? `तहसील: ${item.tehsil}` : item.block ? `ब्लॉक: ${item.block}` : ""),
       badge: item.badge || (item.pincode ? "✓ प्रमाणित" : ""),
       raw: item,
     };
@@ -191,7 +191,7 @@ export default function SearchSelectBox({
   return (
     <div
       ref={containerRef}
-      className={`relative p-2.5 rounded-xl border transition-all select-none ${
+      className={`relative p-2.5 rounded-xl border transition-all select-none ${open ? "z-40" : "z-10"} ${
         disabled
           ? "bg-gray-100 border-gray-200 text-gray-400 opacity-60 cursor-not-allowed"
           : selectedValue

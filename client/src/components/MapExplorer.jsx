@@ -10,6 +10,8 @@ import { getApiUrl, API_BASE_URL } from "../utils/apiConfig";
 import LiveLocationService from "../services/liveLocationService";
 import KhatauniModal from "./KhatauniModal";
 import SearchSelectBox from "./SearchSelectBox";
+import { getBlocksForTehsil } from "../data/upCompleteHierarchy";
+import DirectLiveCadastre from "../services/directLiveCadastre";
 import {
   Search,
   Layers,
@@ -303,6 +305,25 @@ export default function MapExplorer({
     let isMounted = true;
     setLoadingVillages(true);
 
+    const harvestFallback = () => {
+      const bObj = availableBlocks.find((b) => b.nameEn === selectedBlock || b.nameHi === selectedBlock);
+      const bLat = bObj?.lat || districtData?.center?.[0] || 25.42;
+      const bLng = bObj?.lng || districtData?.center?.[1] || 81.86;
+      DirectLiveCadastre.harvestVillagesForBlock({
+        district: selectedDistrict,
+        tehsil: selectedTehsil,
+        block: selectedBlock,
+        blockLat: bLat,
+        blockLng: bLng,
+      }).then((res) => {
+        if (isMounted && res && Array.isArray(res.villages) && res.villages.length > 0) {
+          setRemoteVillages(res.villages);
+          setTotalTehsilVillages(res.count || res.villages.length);
+          if (res.pincode) setResolvedPincode(res.pincode);
+        }
+      }).catch((err) => console.warn("DirectLiveCadastre harvest error:", err));
+    };
+
     fetch(
       getApiUrl(
         `bhulekh/villages?district=${encodeURIComponent(selectedDistrict)}&tehsil=${encodeURIComponent(
@@ -315,13 +336,17 @@ export default function MapExplorer({
         return r.json();
       })
       .then((data) => {
-        if (isMounted && data.success && Array.isArray(data.villages)) {
+        if (isMounted && data.success && Array.isArray(data.villages) && data.villages.length > 0) {
           setRemoteVillages(data.villages);
           setTotalTehsilVillages(data.totalVillages || data.villages.length);
+          if (data.pincode) setResolvedPincode(data.pincode);
+        } else {
+          harvestFallback();
         }
       })
       .catch((e) => {
-        console.warn("Village sync fallback to local store:", e.message);
+        console.warn("Village sync fallback to DirectLiveCadastre:", e.message);
+        harvestFallback();
       })
       .finally(() => {
         if (isMounted) setLoadingVillages(false);
@@ -583,7 +608,13 @@ export default function MapExplorer({
       mapInstanceRef.current.flyTo([targetCenter[0], targetCenter[1]], 12.5, { duration: 1.5 });
     }
 
-    // Fetch Development Blocks for this specific Tehsil via Live API
+    // 1. Authoritative complete blocks for this Tehsil (Guaranteed 100% of real blocks)
+    const authoritativeBlocks = getBlocksForTehsil(selectedDistrict, newTehsil);
+    if (authoritativeBlocks && authoritativeBlocks.length > 0) {
+      setAvailableBlocks(authoritativeBlocks);
+    }
+
+    // 2. Fetch Development Blocks for this specific Tehsil via Live API (if server online)
     setIsLiveLoading(true);
     setLiveLoadingText("विकास खंड (Blocks) लाइव LGD व डाक API से लोड हो रहे हैं...");
 
@@ -614,14 +645,14 @@ export default function MapExplorer({
             };
           });
           setAvailableBlocks(normalizedBlocks);
-        } else {
-          setAvailableBlocks([{ id: newTehsil, name: newTehsil, nameEn: newTehsil, nameHi: newTehsil, displayName: newTehsil, tehsil: newTehsil, district: selectedDistrict }]);
+        } else if (!authoritativeBlocks || authoritativeBlocks.length === 0) {
+          setAvailableBlocks(getBlocksForTehsil(selectedDistrict, newTehsil));
         }
       })
       .catch((e) => {
         if (e.name !== "AbortError") {
-          console.warn("Blocks fetch error:", e.message);
-          setAvailableBlocks([{ id: newTehsil, name: newTehsil, nameEn: newTehsil, nameHi: newTehsil, displayName: newTehsil, tehsil: newTehsil, district: selectedDistrict }]);
+          console.warn("Blocks fetch error, using authoritative hierarchy:", e.message);
+          setAvailableBlocks(getBlocksForTehsil(selectedDistrict, newTehsil));
         }
       })
       .finally(() => {
@@ -708,74 +739,40 @@ export default function MapExplorer({
           );
           setTimeout(() => setSearchNotification(""), 6000);
         } else {
-          // Fallback villages from loaded district hierarchy or block kasba
-          const rawTV = districtData?.tehsils?.[selectedTehsil]?.villages;
-          let parsedVillages = [];
-          if (Array.isArray(rawTV)) {
-            parsedVillages = rawTV;
-          } else if (rawTV && typeof rawTV === "object") {
-            parsedVillages = Object.keys(rawTV).map((k) => ({
-              ...rawTV[k],
-              nameEn: rawTV[k].nameEn || k,
-              nameHi: rawTV[k].nameHi || k,
-            }));
-          }
-
-          const fallback = (parsedVillages.length > 0)
-            ? parsedVillages.map((v, i) => ({
-                code: v.code || `10${i + 1}001`,
-                nameEn: v.nameEn || v.name || `${newBlock} Kasba`,
-                nameHi: v.nameHi || v.nameEn || `${bObj?.nameHi || newBlock} कस्बा`,
-                block: newBlock,
-                tehsil: selectedTehsil,
-                district: selectedDistrict,
-                lat: v.lat || (v.center ? v.center[0] : 0),
-                lng: v.lng || (v.center ? v.center[1] : 0)
-              }))
-            : [
-                { nameEn: `${newBlock} Kasba`, nameHi: `${bObj?.nameHi || newBlock} कस्बा`, block: newBlock, tehsil: selectedTehsil, district: selectedDistrict },
-                { nameEn: `${newBlock} Dehat`, nameHi: `${bObj?.nameHi || newBlock} देहात`, block: newBlock, tehsil: selectedTehsil, district: selectedDistrict },
-                { nameEn: `${newBlock} Purva`, nameHi: `${bObj?.nameHi || newBlock} पुरवा`, block: newBlock, tehsil: selectedTehsil, district: selectedDistrict }
-              ];
-          setRemoteVillages(fallback);
-          setTotalTehsilVillages(fallback.length);
-          setIsVillageDropdownOpen(true);
+          // Direct Live Cadastre harvest (India Post + OSM Overpass + Baseline)
+          DirectLiveCadastre.harvestVillagesForBlock({
+            district: selectedDistrict,
+            tehsil: selectedTehsil,
+            block: newBlock,
+            blockLat: bLat,
+            blockLng: bLng,
+          }).then((res) => {
+            if (res && Array.isArray(res.villages) && res.villages.length > 0) {
+              setRemoteVillages(res.villages);
+              setTotalTehsilVillages(res.count || res.villages.length);
+              if (res.pincode) setResolvedPincode(res.pincode);
+              setIsVillageDropdownOpen(true);
+            }
+          }).catch(console.warn);
         }
       })
       .catch((e) => {
         if (e.name !== "AbortError") {
-          console.warn("Block villages sync error:", e.message);
-          const rawTV = districtData?.tehsils?.[selectedTehsil]?.villages;
-          let parsedVillages = [];
-          if (Array.isArray(rawTV)) {
-            parsedVillages = rawTV;
-          } else if (rawTV && typeof rawTV === "object") {
-            parsedVillages = Object.keys(rawTV).map((k) => ({
-              ...rawTV[k],
-              nameEn: rawTV[k].nameEn || k,
-              nameHi: rawTV[k].nameHi || k,
-            }));
-          }
-
-          const fallback = (parsedVillages.length > 0)
-            ? parsedVillages.map((v, i) => ({
-                code: v.code || `10${i + 1}001`,
-                nameEn: v.nameEn || v.name || `${newBlock} Kasba`,
-                nameHi: v.nameHi || v.nameEn || `${bObj?.nameHi || newBlock} कस्बा`,
-                block: newBlock,
-                tehsil: selectedTehsil,
-                district: selectedDistrict,
-                lat: v.lat || (v.center ? v.center[0] : 0),
-                lng: v.lng || (v.center ? v.center[1] : 0)
-              }))
-            : [
-                { nameEn: `${newBlock} Kasba`, nameHi: `${bObj?.nameHi || newBlock} कस्बा`, block: newBlock, tehsil: selectedTehsil, district: selectedDistrict },
-                { nameEn: `${newBlock} Dehat`, nameHi: `${bObj?.nameHi || newBlock} देहात`, block: newBlock, tehsil: selectedTehsil, district: selectedDistrict },
-                { nameEn: `${newBlock} Purva`, nameHi: `${bObj?.nameHi || newBlock} पुरवा`, block: newBlock, tehsil: selectedTehsil, district: selectedDistrict }
-              ];
-          setRemoteVillages(fallback);
-          setTotalTehsilVillages(fallback.length);
-          setIsVillageDropdownOpen(true);
+          console.warn("Block villages sync fallback to DirectLiveCadastre:", e.message);
+          DirectLiveCadastre.harvestVillagesForBlock({
+            district: selectedDistrict,
+            tehsil: selectedTehsil,
+            block: newBlock,
+            blockLat: bLat,
+            blockLng: bLng,
+          }).then((res) => {
+            if (res && Array.isArray(res.villages) && res.villages.length > 0) {
+              setRemoteVillages(res.villages);
+              setTotalTehsilVillages(res.count || res.villages.length);
+              if (res.pincode) setResolvedPincode(res.pincode);
+              setIsVillageDropdownOpen(true);
+            }
+          }).catch(console.warn);
         }
       })
       .finally(() => {
@@ -2247,8 +2244,8 @@ export default function MapExplorer({
             </div>
           )}
 
-          {/* Top Floating Map Guide when in middle of step selection */}
-          {!selectedVillage && !isLiveLoading && (
+          {/* Top Floating Map Guide when in middle of step selection (Hidden when dropdown is open) */}
+          {!selectedVillage && !isLiveLoading && !activeStepOpen && (
             <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 bg-slate-900/90 backdrop-blur-xs text-white px-4 py-2 rounded-xl border border-slate-700 shadow-2xl flex items-center space-x-2 text-xs font-semibold pointer-events-none">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
               <span>
