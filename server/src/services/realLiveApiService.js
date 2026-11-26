@@ -365,21 +365,22 @@ class RealLiveApiService {
     // Query Overpass Multi-Mirror (radius 25,000m)
     const overpassQuery = `[out:json][timeout:15];(node["place"~"village|hamlet|town|suburb|locality"](around:25000,${centerLat},${centerLng});way["place"~"village|hamlet|town"](around:25000,${centerLat},${centerLng}););out center tags 350;`;
     const mirrors = [
-      `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(overpassQuery)}`,
-      `https://overpass.kumi.systems/api/interpreter?data=${encodeURIComponent(overpassQuery)}`,
-      `https://maps.mail.ru/osm/tools/overpass/api/interpreter?data=${encodeURIComponent(overpassQuery)}`,
-      `https://lz4.overpass-api.de/api/interpreter?data=${encodeURIComponent(overpassQuery)}`,
+      "https://overpass-api.de/api/interpreter",
+      "https://overpass.kumi.systems/api/interpreter",
+      "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+      "https://lz4.overpass-api.de/api/interpreter",
     ];
 
     const headers = {
-      "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
       "Accept": "application/json",
+      "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
     };
 
     let overpassSuccess = false;
     for (const url of mirrors) {
       try {
-        const res = await axios.get(url, { headers, timeout: 6500 });
+        const res = await axios.post(url, `data=${encodeURIComponent(overpassQuery)}`, { headers, timeout: 6500 });
         if (res.data?.elements && Array.isArray(res.data.elements) && res.data.elements.length > 0) {
           res.data.elements.forEach((el, idx) => {
             const rawEn = el.tags?.name || el.tags?.["name:en"] || "";
@@ -547,8 +548,6 @@ class RealLiveApiService {
       let geoQuery = `${cleanQ}, Uttar Pradesh, India`;
       if (block && district) {
         geoQuery = `${cleanQ}, ${block}, ${district}, Uttar Pradesh, India`;
-      } else if (tehsil && district) {
-        geoQuery = `${cleanQ}, ${tehsil}, ${district}, Uttar Pradesh, India`;
       } else if (district) {
         geoQuery = `${cleanQ}, ${district}, Uttar Pradesh, India`;
       }
@@ -694,8 +693,8 @@ class RealLiveApiService {
     // Query Overpass with concurrent mirrors and fast 2200ms timeout
     const overpassQuery = `[out:json][timeout:4];(way["landuse"~"farmland|orchard|meadow|residential|allotments"](around:1200,${latNum},${lngNum});way["boundary"="cadastral"](around:1200,${latNum},${lngNum}););out body geom 15;`;
     const mirrors = [
-      `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(overpassQuery)}`,
-      `https://overpass.kumi.systems/api/interpreter?data=${encodeURIComponent(overpassQuery)}`,
+      "https://overpass-api.de/api/interpreter",
+      "https://overpass.kumi.systems/api/interpreter",
     ];
 
     let livePolygons = [];
@@ -703,10 +702,18 @@ class RealLiveApiService {
       const fetchPromise = Promise.any(
         mirrors.map((url) =>
           axios
-            .get(url, {
-              headers: { "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)" },
-              timeout: 1900,
-            })
+            .post(
+              url,
+              `data=${encodeURIComponent(overpassQuery)}`,
+              {
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                  "Accept": "application/json",
+                  "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
+                },
+                timeout: 3000,
+              }
+            )
             .then((res) => {
               if (res.data?.elements && Array.isArray(res.data.elements)) {
                 const validWays = res.data.elements.filter(
@@ -723,7 +730,7 @@ class RealLiveApiService {
 
       livePolygons = await Promise.race([
         fetchPromise,
-        new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), 2100)),
+        new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), 3200)),
       ]);
     } catch (e) {
       livePolygons = [];

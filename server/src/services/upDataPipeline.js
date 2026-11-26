@@ -365,7 +365,11 @@ class UpDataPipeline {
       const response = await fetch(url, {
         method: "POST",
         body: `data=${encodeURIComponent(overpassQuery)}`,
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+          "Accept": "application/json",
+          "User-Agent": "BhumiChain-UP-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
+        },
         signal: AbortSignal.timeout(12000),
       });
 

@@ -25,22 +25,22 @@ export class RealApiFetcher {
   static async fetchNominatimGeocode({ village = "", block = "", tehsil = "", district = "Chitrakoot" }) {
     const cleanVillage = (village || "").replace(/^(Mauza|Kasba|Gram|मौजा|कस्बा|ग्राम)\s+/i, "").trim();
     const cleanBlock = (block || "").trim();
-    const cleanTehsil = (tehsil || "").trim();
     const cleanDistrict = (district || "").trim();
 
-    // Query cascade order
+    // Strict sequential fallback order (NEVER include tehsil in Nominatim query):
+    // 1. ${village}, ${district}, Uttar Pradesh, India
+    // 2. ${village}, ${block}, ${district}, Uttar Pradesh, India
+    // 3. ${block}, ${district}, Uttar Pradesh, India
+    // 4. ${district}, Uttar Pradesh, India
     const queries = [];
-    if (cleanVillage && cleanBlock) {
-      queries.push(`${cleanVillage}, ${cleanBlock}, ${cleanDistrict}, Uttar Pradesh, India`);
-    }
-    if (cleanVillage) {
+    if (cleanVillage && cleanDistrict) {
       queries.push(`${cleanVillage}, ${cleanDistrict}, Uttar Pradesh, India`);
     }
-    if (cleanBlock && cleanBlock !== cleanVillage) {
-      queries.push(`${cleanBlock}, ${cleanDistrict}, Uttar Pradesh, India`);
+    if (cleanVillage && cleanBlock && cleanDistrict) {
+      queries.push(`${cleanVillage}, ${cleanBlock}, ${cleanDistrict}, Uttar Pradesh, India`);
     }
-    if (cleanTehsil && cleanTehsil !== cleanBlock) {
-      queries.push(`${cleanTehsil}, ${cleanDistrict}, Uttar Pradesh, India`);
+    if (cleanBlock && cleanDistrict) {
+      queries.push(`${cleanBlock}, ${cleanDistrict}, Uttar Pradesh, India`);
     }
     if (cleanDistrict) {
       queries.push(`${cleanDistrict}, Uttar Pradesh, India`);
@@ -240,7 +240,8 @@ export class RealApiFetcher {
           `data=${encodeURIComponent(query)}`,
           {
             headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
+              "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+              "Accept": "application/json",
               "User-Agent": NOMINATIM_HEADERS["User-Agent"],
             },
             timeout: 10000,
@@ -312,7 +313,8 @@ export class RealApiFetcher {
           `data=${encodeURIComponent(query)}`,
           {
             headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
+              "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+              "Accept": "application/json",
               "User-Agent": NOMINATIM_HEADERS["User-Agent"],
             },
             timeout: 10000,

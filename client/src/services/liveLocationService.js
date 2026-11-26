@@ -5,9 +5,10 @@
  */
 
 const OVERPASS_ENDPOINTS = [
-  "https://overpass.kumi.systems/api/interpreter",
   "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
   "https://overpass.private.coffee/api/interpreter",
+  "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ];
 
 export class LiveLocationService {
@@ -86,21 +87,22 @@ export class LiveLocationService {
   static async fetchDirectBrowserCoordinates({ village = "", block = "", tehsil = "", district = "Chitrakoot" }) {
     const cleanVillage = (village || "").replace(/^(Mauza|Kasba|Gram|मौजा|कस्बा|ग्राम)\s+/i, "").trim();
     const cleanBlock = (block || "").trim();
-    const cleanTehsil = (tehsil || "").trim();
     const cleanDistrict = (district || "").trim();
 
+    // Strict sequential fallback order (NEVER include tehsil in Nominatim query):
+    // 1. ${village}, ${district}, Uttar Pradesh, India
+    // 2. ${village}, ${block}, ${district}, Uttar Pradesh, India
+    // 3. ${block}, ${district}, Uttar Pradesh, India
+    // 4. ${district}, Uttar Pradesh, India
     const queries = [];
-    if (cleanVillage && cleanBlock) {
-      queries.push(`${cleanVillage}, ${cleanBlock}, ${cleanDistrict}, Uttar Pradesh, India`);
-    }
-    if (cleanVillage) {
+    if (cleanVillage && cleanDistrict) {
       queries.push(`${cleanVillage}, ${cleanDistrict}, Uttar Pradesh, India`);
     }
-    if (cleanBlock && cleanBlock !== cleanVillage) {
-      queries.push(`${cleanBlock}, ${cleanDistrict}, Uttar Pradesh, India`);
+    if (cleanVillage && cleanBlock && cleanDistrict) {
+      queries.push(`${cleanVillage}, ${cleanBlock}, ${cleanDistrict}, Uttar Pradesh, India`);
     }
-    if (cleanTehsil && cleanTehsil !== cleanBlock) {
-      queries.push(`${cleanTehsil}, ${cleanDistrict}, Uttar Pradesh, India`);
+    if (cleanBlock && cleanDistrict) {
+      queries.push(`${cleanBlock}, ${cleanDistrict}, Uttar Pradesh, India`);
     }
     if (cleanDistrict) {
       queries.push(`${cleanDistrict}, Uttar Pradesh, India`);
@@ -113,7 +115,9 @@ export class LiveLocationService {
         )}&format=json&addressdetails=1&limit=1`;
         const res = await fetch(url, {
           headers: {
+            "Accept": "application/json",
             "Accept-Language": "hi,en",
+            "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
           },
         });
         const data = await res.json();
@@ -138,7 +142,7 @@ export class LiveLocationService {
   }
 
   /**
-   * 3. Direct Browser Overpass Satellite Farmland Boundaries
+   * 3. Direct Browser Overpass Satellite Farmland Boundaries (Fixes 406 Not Acceptable error)
    */
   static async fetchDirectBrowserFarmlandPolygons({ lat, lng, radius = 1000 }) {
     if (!lat || !lng) return [];
@@ -152,9 +156,11 @@ export class LiveLocationService {
         const res = await fetch(endpoint, {
           method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Accept": "application/json",
+            "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
           },
-          body: `data=${encodeURIComponent(query)}`,
+          body: "data=" + encodeURIComponent(query),
         });
         const data = await res.json();
         const elements = data.elements || [];

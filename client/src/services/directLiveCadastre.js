@@ -8,9 +8,10 @@ import upVillagesCache from "../data/upVillagesCache.json";
 import { UP_ADMIN_HIERARCHY } from "../data/upCadastralData";
 
 const OVERPASS_MIRRORS = [
-  "https://overpass.kumi.systems/api/interpreter",
   "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
   "https://overpass.private.coffee/api/interpreter",
+  "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ];
 
 // In-memory cache for block villages: Key = `${district}:${block}`.toLowerCase()
@@ -101,7 +102,11 @@ export class DirectLiveCadastre {
         const pData = await pRes.json();
 
         if (Array.isArray(pData) && pData[0]?.Status === "Success" && Array.isArray(pData[0].PostOffice)) {
-          const pOffices = pData[0].PostOffice.filter((po) => (po.State || "").toLowerCase() === "uttar pradesh");
+          const pOffices = pData[0].PostOffice.filter((po) => {
+            const isUP = (po.State || "").toLowerCase() === "uttar pradesh";
+            const distMatch = !cleanD || (po.District || "").toLowerCase().includes(cleanD);
+            return isUP && distMatch;
+          });
           for (const po of pOffices) {
             const vName = DirectLiveCadastre.cleanVillageName(po.Name);
             if (vName && !discoveredVillages.some((v) => v.nameEn.toLowerCase() === vName.toLowerCase())) {
@@ -139,8 +144,12 @@ export class DirectLiveCadastre {
       try {
         const res = await fetch(ep, {
           method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `data=${encodeURIComponent(query)}`,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Accept": "application/json",
+            "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
+          },
+          body: "data=" + encodeURIComponent(query),
         });
         const data = await res.json();
         const elements = data.elements || [];
@@ -170,6 +179,100 @@ export class DirectLiveCadastre {
     }
 
     return [];
+  }
+
+  /**
+   * Fetch live farmland polygons around coordinates from Overpass (Fixes 406 Not Acceptable error)
+   */
+  static async fetchOverpassFarmlandPolygons({ lat, lng, radius = 1000 }) {
+    if (!lat || !lng) return [];
+    const cLat = parseFloat(lat);
+    const cLng = parseFloat(lng);
+    const query = `[out:json][timeout:12]; way["landuse"~"farmland|orchard|meadow"](around:${radius},${cLat},${cLng}); out geom 20;`;
+
+    for (const ep of OVERPASS_MIRRORS) {
+      try {
+        const res = await fetch(ep, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Accept": "application/json",
+            "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
+          },
+          body: "data=" + encodeURIComponent(query),
+        });
+        const data = await res.json();
+        const elements = data.elements || [];
+        const polygons = elements
+          .filter((el) => Array.isArray(el.geometry) && el.geometry.length >= 3)
+          .map((el) => el.geometry.map((pt) => [parseFloat(pt.lat), parseFloat(pt.lon)]));
+
+        if (polygons.length > 0) {
+          return polygons;
+        }
+      } catch (e) {
+        // Try next mirror
+      }
+    }
+    return [];
+  }
+
+  /**
+   * Geocode coordinates using strict sequential fallback (Never includes Tehsil in query)
+   * 1. ${village}, ${district}, Uttar Pradesh, India
+   * 2. ${village}, ${block}, ${district}, Uttar Pradesh, India
+   * 3. ${block}, ${district}, Uttar Pradesh, India
+   * 4. ${district}, Uttar Pradesh, India
+   */
+  static async fetchNominatimGeocode({ village = "", block = "", district = "Chitrakoot" }) {
+    const cleanV = DirectLiveCadastre.cleanVillageName(village);
+    const cleanB = (block || "").trim();
+    const cleanD = (district || "").trim();
+
+    const queries = [];
+    if (cleanV && cleanD) {
+      queries.push(`${cleanV}, ${cleanD}, Uttar Pradesh, India`);
+    }
+    if (cleanV && cleanB && cleanD) {
+      queries.push(`${cleanV}, ${cleanB}, ${cleanD}, Uttar Pradesh, India`);
+    }
+    if (cleanB && cleanD) {
+      queries.push(`${cleanB}, ${cleanD}, Uttar Pradesh, India`);
+    }
+    if (cleanD) {
+      queries.push(`${cleanD}, Uttar Pradesh, India`);
+    }
+
+    for (const q of queries) {
+      try {
+        const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+          q
+        )}&format=json&addressdetails=1&limit=1`;
+        const res = await fetch(url, {
+          headers: {
+            "Accept": "application/json",
+            "Accept-Language": "hi,en",
+            "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
+          },
+        });
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          const m = data[0];
+          return {
+            success: true,
+            query: q,
+            lat: parseFloat(m.lat),
+            lng: parseFloat(m.lon),
+            postcode: m.address?.postcode || "",
+            displayName: m.display_name,
+            source: "NOMINATIM_LIVE_GEOCODE",
+          };
+        }
+      } catch (e) {
+        // Continue to next cascade
+      }
+    }
+    return null;
   }
 
   /**
@@ -338,7 +441,13 @@ export class DirectLiveCadastre {
       const postUrl = `https://api.postalpincode.in/postoffice/${encodeURIComponent(q)}`;
 
       const [nomRes, postRes] = await Promise.allSettled([
-        fetch(nomUrl, { headers: { "Accept-Language": "hi,en" } }).then((r) => r.json()),
+        fetch(nomUrl, {
+          headers: {
+            "Accept": "application/json",
+            "Accept-Language": "hi,en",
+            "User-Agent": "BhumiChain-UP-Land-Portal/1.0 (https://abhishek-portfolio-uir4.onrender.com)",
+          },
+        }).then((r) => r.json()),
         fetch(postUrl).then((r) => r.json()),
       ]);
 
