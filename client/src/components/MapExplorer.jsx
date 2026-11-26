@@ -227,7 +227,7 @@ export default function MapExplorer({
 
   // Tehsils List (Dynamic from API + static fallback)
   const availableTehsils = (dynamicTehsils && dynamicTehsils.length > 0)
-    ? dynamicTehsils.map((t) => t.nameEn || t.id)
+    ? dynamicTehsils.map((t) => (typeof t === "string" ? t : (t.nameEn || t.name || t.id)))
     : (districtData ? Object.keys(districtData?.tehsils || {}) : []);
 
   const tehsilData = (selectedTehsil && districtData?.tehsils?.[selectedTehsil]) ? districtData.tehsils[selectedTehsil] : null;
@@ -477,13 +477,37 @@ export default function MapExplorer({
       })
       .then((data) => {
         if (data.success && Array.isArray(data.tehsils) && data.tehsils.length > 0) {
-          setDynamicTehsils(data.tehsils);
+          const normalized = data.tehsils.map((t, idx) => {
+            const en = typeof t === "string" ? t : (t.nameEn || t.name || t.id || `tehsil-${idx}`);
+            const rawHi = typeof t === "object" ? (t.nameHi || t.name || en) : en;
+            const cleanHi = (rawHi || "").replace(/\s*\([^)]*\)/g, "").trim();
+            const cleanEn = (en || "").replace(/\s*\([^)]*\)/g, "").trim();
+            return {
+              id: cleanEn || en,
+              name: cleanEn || en,
+              nameEn: cleanEn || en,
+              nameHi: cleanHi || cleanEn || en,
+              displayName: cleanHi && cleanEn && cleanHi !== cleanEn ? `${cleanHi} (${cleanEn})` : cleanHi || cleanEn,
+              center: t.center,
+              zoom: t.zoom,
+              totalVillages: t.totalVillages || 100,
+            };
+          });
+          setDynamicTehsils(normalized);
         } else if (dData?.tehsils) {
-          const fallback = Object.keys(dData.tehsils).map((t) => ({
-            name: t,
-            nameHi: dData.tehsils[t]?.nameHi || t,
-            totalVillages: dData.tehsils[t]?.villages?.length || 100,
-          }));
+          const fallback = Object.keys(dData.tehsils).map((t) => {
+            const tObj = dData.tehsils[t] || {};
+            const rawHi = tObj.nameHi || t;
+            const cleanHi = rawHi.replace(/\s*\([^)]*\)/g, "").trim();
+            return {
+              id: t,
+              name: t,
+              nameEn: t,
+              nameHi: cleanHi,
+              displayName: cleanHi && t && cleanHi !== t ? `${cleanHi} (${t})` : cleanHi || t,
+              totalVillages: tObj?.villages ? (Array.isArray(tObj.villages) ? tObj.villages.length : Object.keys(tObj.villages).length) : 100,
+            };
+          });
           setDynamicTehsils(fallback);
         }
       })
@@ -491,11 +515,19 @@ export default function MapExplorer({
         if (e.name !== "AbortError") {
           console.warn("Tehsil fetch fallback:", e.message);
           if (dData?.tehsils) {
-            const fallback = Object.keys(dData.tehsils).map((t) => ({
-              name: t,
-              nameHi: dData.tehsils[t]?.nameHi || t,
-              totalVillages: dData.tehsils[t]?.villages?.length || 100,
-            }));
+            const fallback = Object.keys(dData.tehsils).map((t) => {
+              const tObj = dData.tehsils[t] || {};
+              const rawHi = tObj.nameHi || t;
+              const cleanHi = rawHi.replace(/\s*\([^)]*\)/g, "").trim();
+              return {
+                id: t,
+                name: t,
+                nameEn: t,
+                nameHi: cleanHi,
+                displayName: cleanHi && t && cleanHi !== t ? `${cleanHi} (${t})` : cleanHi || t,
+                totalVillages: tObj?.villages ? (Array.isArray(tObj.villages) ? tObj.villages.length : Object.keys(tObj.villages).length) : 100,
+              };
+            });
             setDynamicTehsils(fallback);
           }
         }
@@ -543,8 +575,9 @@ export default function MapExplorer({
     // Auto-advance to Step 3: Block
     setActiveStepOpen(3);
 
+    const dynTeh = dynamicTehsils?.find((t) => (t.nameEn || t.name || t.id) === newTehsil);
     const tData = districtData?.tehsils?.[newTehsil];
-    const targetCenter = tData?.center || districtData?.center || [26.85, 80.95];
+    const targetCenter = dynTeh?.center || tData?.center || districtData?.center || [26.85, 80.95];
 
     if (mapInstanceRef.current && targetCenter) {
       mapInstanceRef.current.flyTo([targetCenter[0], targetCenter[1]], 12.5, { duration: 1.5 });
@@ -561,15 +594,34 @@ export default function MapExplorer({
       })
       .then((data) => {
         if (data.success && Array.isArray(data.blocks) && data.blocks.length > 0) {
-          setAvailableBlocks(data.blocks);
+          const normalizedBlocks = data.blocks.map((b, idx) => {
+            const en = typeof b === "string" ? b : (b.nameEn || b.name || b.id || `block-${idx}`);
+            const rawHi = typeof b === "object" ? (b.nameHi || b.name || en) : en;
+            const cleanHi = (rawHi || "").replace(/\s*\([^)]*\)/g, "").trim();
+            const cleanEn = (en || "").replace(/\s*\([^)]*\)/g, "").trim();
+            return {
+              id: cleanEn || en,
+              name: cleanEn || en,
+              nameEn: cleanEn || en,
+              nameHi: cleanHi || cleanEn || en,
+              displayName: cleanHi && cleanEn && cleanHi !== cleanEn ? `${cleanHi} (${cleanEn})` : cleanHi || cleanEn,
+              tehsil: b.tehsil || newTehsil,
+              district: selectedDistrict,
+              isHeadquarters: Boolean(b.isHeadquarters),
+              lat: b.lat,
+              lng: b.lng,
+              raw: b,
+            };
+          });
+          setAvailableBlocks(normalizedBlocks);
         } else {
-          setAvailableBlocks([{ nameEn: newTehsil, nameHi: newTehsil, tehsil: newTehsil, district: selectedDistrict }]);
+          setAvailableBlocks([{ id: newTehsil, name: newTehsil, nameEn: newTehsil, nameHi: newTehsil, displayName: newTehsil, tehsil: newTehsil, district: selectedDistrict }]);
         }
       })
       .catch((e) => {
         if (e.name !== "AbortError") {
           console.warn("Blocks fetch error:", e.message);
-          setAvailableBlocks([{ nameEn: newTehsil, nameHi: newTehsil, tehsil: newTehsil, district: selectedDistrict }]);
+          setAvailableBlocks([{ id: newTehsil, name: newTehsil, nameEn: newTehsil, nameHi: newTehsil, displayName: newTehsil, tehsil: newTehsil, district: selectedDistrict }]);
         }
       })
       .finally(() => {
@@ -1834,23 +1886,31 @@ export default function MapExplorer({
               <SearchSelectBox
                 stepNumber={2}
                 label="2. अपनी तहसील चुनें (Tehsil)"
-                badge={availableTehsils.length > 0 ? `${availableTehsils.length} तहसील` : ""}
+                badge={
+                  (dynamicTehsils && dynamicTehsils.length > 0)
+                    ? `${dynamicTehsils.length} तहसील`
+                    : (availableTehsils.length > 0 ? `${availableTehsils.length} तहसील` : "")
+                }
                 placeholder="यहाँ क्लिक करें या तहसील खोजें..."
                 disabled={!selectedDistrict}
                 disabledText="🔒 पहले जिला चुनें"
-                items={availableTehsils.map((tehsilKey) => {
-                  const dyn = dynamicTehsils.find((t) => (t.nameEn || t.id) === tehsilKey);
-                  const tInfo = districtData?.tehsils?.[tehsilKey];
-                  const nameHi = dyn?.nameHi || tInfo?.nameHi || tehsilKey;
+                items={(dynamicTehsils && dynamicTehsils.length > 0 ? dynamicTehsils : availableTehsils).map((t, idx) => {
+                  const en = typeof t === "object" ? (t.nameEn || t.name || t.id || `tehsil-${idx}`) : t;
+                  const tInfo = districtData?.tehsils?.[en];
+                  const rawHi = typeof t === "object" ? (t.nameHi || tInfo?.nameHi || en) : (tInfo?.nameHi || en);
+                  const cleanHi = (rawHi || "").replace(/\s*\([^)]*\)/g, "").trim();
+                  const cleanEn = (en || "").replace(/\s*\([^)]*\)/g, "").trim();
                   return {
-                    id: tehsilKey,
-                    nameEn: tehsilKey,
-                    nameHi: nameHi,
+                    id: cleanEn || en,
+                    nameEn: cleanEn || en,
+                    nameHi: cleanHi || cleanEn || en,
+                    displayName: cleanHi && cleanEn && cleanHi !== cleanEn ? `${cleanHi} (${cleanEn})` : cleanHi || cleanEn,
                     subtitle: selectedDistrict ? `जनपद: ${UP_ADMIN_HIERARCHY[selectedDistrict]?.nameHi || selectedDistrict}` : "",
+                    raw: t,
                   };
                 })}
                 selectedValue={selectedTehsil}
-                onSelect={(item) => handleTehsilChange(item.nameEn || item.id || item)}
+                onSelect={(item) => handleTehsilChange(item.nameEn || item.id || item.name || item)}
                 onClear={() => handleTehsilChange("")}
                 isOpen={activeStepOpen === 2}
                 onOpenChange={(open) => setActiveStepOpen(open ? 2 : null)}
@@ -1865,16 +1925,23 @@ export default function MapExplorer({
                 placeholder="यहाँ क्लिक करें या ब्लॉक खोजें..."
                 disabled={!selectedTehsil}
                 disabledText="🔒 पहले तहसील चुनें"
-                items={availableBlocks.map((blk) => ({
-                  id: blk.nameEn || blk.id,
-                  nameEn: blk.nameEn || blk.id,
-                  nameHi: blk.nameHi || blk.nameEn || blk.id,
-                  subtitle: blk.tehsil ? `तहसील: ${blk.tehsil}` : (selectedTehsil ? `तहसील: ${selectedTehsil}` : ""),
-                  badge: blk.isHeadquarters ? "मुख्यालय" : "",
-                  raw: blk,
-                }))}
+                items={availableBlocks.map((blk, idx) => {
+                  const en = typeof blk === "object" ? (blk.nameEn || blk.name || blk.id || `block-${idx}`) : blk;
+                  const rawHi = typeof blk === "object" ? (blk.nameHi || blk.name || en) : en;
+                  const cleanHi = (rawHi || "").replace(/\s*\([^)]*\)/g, "").trim();
+                  const cleanEn = (en || "").replace(/\s*\([^)]*\)/g, "").trim();
+                  return {
+                    id: cleanEn || en,
+                    nameEn: cleanEn || en,
+                    nameHi: cleanHi || cleanEn || en,
+                    displayName: cleanHi && cleanEn && cleanHi !== cleanEn ? `${cleanHi} (${cleanEn})` : cleanHi || cleanEn,
+                    subtitle: blk.tehsil ? `तहसील: ${blk.tehsil}` : (selectedTehsil ? `तहसील: ${selectedTehsil}` : ""),
+                    badge: blk.isHeadquarters ? "मुख्यालय" : "",
+                    raw: blk,
+                  };
+                })}
                 selectedValue={selectedBlock}
-                onSelect={(item) => handleBlockChange(item.nameEn || item.id || item)}
+                onSelect={(item) => handleBlockChange(item.nameEn || item.id || item.name || item)}
                 onClear={() => handleBlockChange("")}
                 isOpen={activeStepOpen === 3}
                 onOpenChange={(open) => setActiveStepOpen(open ? 3 : null)}

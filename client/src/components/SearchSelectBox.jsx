@@ -118,7 +118,7 @@ export default function SearchSelectBox({
     const nameHi = item.nameHi || item.name_hindi || nameEn;
     const cleanHi = (nameHi || "").replace(/\s*\([^)]*\)/g, "").trim();
     const cleanEn = (nameEn || "").replace(/\s*\([^)]*\)/g, "").trim();
-    const displayName = cleanHi && cleanEn && cleanHi !== cleanEn ? `${cleanHi} (${cleanEn})` : cleanHi || cleanEn || nameEn || nameHi;
+    const displayName = item.displayName || (cleanHi && cleanEn && cleanHi !== cleanEn ? `${cleanHi} (${cleanEn})` : cleanHi || cleanEn || nameEn || nameHi);
     return {
       id: item.id || nameEn,
       nameEn: cleanEn || nameEn,

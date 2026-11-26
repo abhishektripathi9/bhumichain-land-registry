@@ -149,6 +149,7 @@ class LiveFirstResolver {
         const cleanHi = nameHi.replace(/\s*\([^)]*\)/g, "").trim();
         tehsilsMap.set(tKey.toLowerCase(), {
           id: tKey,
+          name: tKey,
           nameEn: tKey,
           nameHi: cleanHi,
           displayName: formatSingleParentheses(cleanHi, tKey),
